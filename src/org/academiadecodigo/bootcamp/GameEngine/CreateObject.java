@@ -20,6 +20,10 @@ public class CreateObject {
         object.delete();
     }
 
+    public void show(){
+        object.draw();
+    }
+
     public void move(Directions direction, double cell) throws Exception{
         switch (direction){
             case UP:
@@ -40,22 +44,33 @@ public class CreateObject {
     private void moveUp(double cell) throws Exception{
         po.setRow(po.getRow()-cell);
         for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(5);
+            Thread.sleep(50);
             object.translate(0,-1);
         }
     }
 
-    private void moveDown(double cell){
+    private void moveDown(double cell) throws Exception{
         po.setRow(po.getRow()+cell);
+        for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
+            Thread.sleep(50);
+            object.translate(0,1);
+        }
     }
 
-    private void moveLeft(double cell){
+    private void moveLeft(double cell) throws Exception{
         po.setCol(po.getCol()-cell);
-
+        for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
+            Thread.sleep(50);
+            object.translate(-1,0);
+        }
     }
 
-    private void moveRight(double cell){
-
+    private void moveRight(double cell) throws Exception{
+        po.setRow(po.getCol()+cell);
+        for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
+            Thread.sleep(50);
+            object.translate(1,0);
+        }
     }
 
 }

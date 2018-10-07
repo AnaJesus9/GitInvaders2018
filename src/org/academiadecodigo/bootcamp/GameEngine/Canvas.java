@@ -6,7 +6,7 @@ public class Canvas extends Grid{
 
     public int row;
     public int col;
-    public int CELLSIZE = 10;
+    public int CELLSIZE = 40;
     public Rectangle field;
 
     public Canvas(int row, int col){
@@ -33,10 +33,6 @@ public class Canvas extends Grid{
 
     public double getHeight(){
         return row * CELLSIZE;
-    }
-
-    public void makePosition(){
-
     }
 
 }
