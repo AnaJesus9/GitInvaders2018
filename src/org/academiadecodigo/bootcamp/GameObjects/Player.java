@@ -29,7 +29,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
     public Bullet shoot(){
-        return new Bullet( this.damage, this);
+        return new Bullet( this.getPosition(), this);
     }
 
 
