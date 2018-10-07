@@ -1,5 +1,12 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
-public class Grid {
-    //branch position
+public abstract class Grid {
+
+    public abstract int getRow();
+
+    public abstract int getCol();
+
+    public abstract int getWidth();
+
+    public abstract int getHeight();
 }
