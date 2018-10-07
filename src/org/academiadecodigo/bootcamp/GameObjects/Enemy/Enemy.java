@@ -1,19 +1,18 @@
 package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
-import org.academiadecodigo.bootcamp.GameEngine.GeneratePosition;
-import org.academiadecodigo.bootcamp.GameEngine.Random;
+import org.academiadecodigo.bootcamp.GameEngine.Position;
 import org.academiadecodigo.bootcamp.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp.GameObjects.Shootable;
 
 public abstract class Enemy extends GameObjects implements Shootable {
 
-    private GeneratePosition position;
+    private Position position;
     private int health;
     private boolean destroyed;
     private int damage;
 
 
-    public Enemy(GeneratePosition position){
+    public Enemy(Position position){
         this.health = 100;
         this.destroyed = false;
         this.position = position;
@@ -37,11 +36,11 @@ public abstract class Enemy extends GameObjects implements Shootable {
         this.destroyed = destroyed;
     }
 
-    public GeneratePosition getPosition() {
+    public Position getPosition() {
         return position;
     }
 
-    public void setPosition(GeneratePosition position) {
+    public void setPosition(Position position) {
         this.position = position;
     }
 
