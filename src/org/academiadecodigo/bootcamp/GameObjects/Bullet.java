@@ -4,6 +4,8 @@ import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.GameEngine.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Position;
 
+import javax.swing.text.Position;
+
 public class Bullet extends Game {
 
     private int damage;
