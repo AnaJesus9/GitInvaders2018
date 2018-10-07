@@ -2,11 +2,11 @@ package org.academiadecodigo.bootcamp.GameEngine;
 
 public abstract class Grid {
 
-    public abstract int getRow();
+    public abstract double getRow();
 
-    public abstract int getCol();
+    public abstract double getCol();
 
-    public abstract int getWidth();
+    public abstract double getWidth();
 
-    public abstract int getHeight();
+    public abstract double getHeight();
 }

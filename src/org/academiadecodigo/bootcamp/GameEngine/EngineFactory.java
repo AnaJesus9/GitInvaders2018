@@ -6,8 +6,8 @@ public class EngineFactory {
         filed.init();
     }
 
-    public static void object(int row, int col){
-        GeneratePosition object = new GeneratePosition(row,col);
+    public static void object(double row, double col){
+        CreatObject object = new CreatObject(row,col);
         object.init();
     }
 
