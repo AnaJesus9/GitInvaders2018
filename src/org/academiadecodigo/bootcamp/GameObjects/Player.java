@@ -15,7 +15,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     private Keyboard keyboard;
 
     public Player(){
-        this.position = new GeneratePosition(0, 5); //Requires implemented position class to add proper parameters
+        this.position = new GeneratePosition(5, 0); //Requires implemented position class to add proper parameters
         this.damage = 1;
         this.lives = 3;
         this.destroyed = false;
@@ -28,12 +28,13 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
 
     }
 
-    public void shoot(){
-
+    public Bullet shoot(){
+        return new Bullet( this.damage, this);
     }
 
+
     public void hit(int damage){
-        this.lives = this.lives - damage;
+        this.lives--;
 
         if(this.lives == 0){
             destroy();
