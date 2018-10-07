@@ -2,5 +2,5 @@ package org.academiadecodigo.bootcamp.GameObjects;
 
 public interface Shootable {
 
-    public void shhot();
+    public void shoot();
 }
