@@ -19,19 +19,19 @@ public class Canvas extends Grid{
         this.field.draw();
     }
 
-    public int getRow(){
+    public double getRow(){
         return row;
     }
 
-    public int getCol(){
+    public double getCol(){
         return col;
     }
 
-    public int getWidth(){
+    public double getWidth(){
         return col * CELLSIZE;
     }
 
-    public int getHeight(){
+    public double getHeight(){
         return row * CELLSIZE;
     }
 
