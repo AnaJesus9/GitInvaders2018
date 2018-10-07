@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
 import org.academiadecodigo.bootcamp.GameEngine.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.GeneratePosition;
+import org.academiadecodigo.bootcamp.GameObjects.Bullet;
 
 public class Ship extends Enemy {
 
@@ -15,17 +16,22 @@ public class Ship extends Enemy {
     }
 
     @Override
-    public void hit() {
+    public void hit(int damage) {
+
+        setHealth(getHealth() - damage);
+
         if(getHealth() == 0){
             setDestroyed(true);
+
+            getPosition().hide();
         }
 
     }
 
 
     @Override
-    public void shoot() {
-
+    public Bullet shoot() {
+        return new Bullet();
     }
 
 }
