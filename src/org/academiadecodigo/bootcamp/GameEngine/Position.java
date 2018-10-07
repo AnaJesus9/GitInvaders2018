@@ -31,4 +31,12 @@ public class Position extends Grid {
     public int getCELLSIZE() {
         return CELLSIZE;
     }
+
+    public void setCol(double col) {
+        this.col = col;
+    }
+
+    public void setRow(double row) {
+        this.row = row;
+    }
 }
