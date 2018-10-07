@@ -7,7 +7,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Player extends GameObjects implements Shootable, KeyboardHandler {
-    private Position position;
+    private GeneratePosition position;
     private int damage;
     private int lives;
     private boolean destroyed;
@@ -15,7 +15,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     private Keyboard keyboard;
 
     public Player(){
-        this.position = new Position(); //Requires implemented position class to add proper parameters
+        this.position = new GeneratePosition(0, 5); //Requires implemented position class to add proper parameters
         this.damage = 1;
         this.lives = 3;
         this.destroyed = false;
@@ -24,12 +24,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
     public void move(Directions direction){
-        switch(direction){
-            case UP: position.setPosition(0, -1);
-                break;
-            case DOWN: position.setPosition(0, 1);
-                break;
-        }
+        getPosition().movePosition(direction, 1);
 
     }
 
@@ -37,8 +32,8 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
 
     }
 
-    public void hit(){
-        this.lives--;
+    public void hit(int damage){
+        this.lives = this.lives - damage;
 
         if(this.lives == 0){
             destroy();
@@ -65,6 +60,10 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
         KeyboardEvent space = new KeyboardEvent();
         space.setKey(KeyboardEvent.KEY_SPACE);
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+
+        this.keyboard.addEventListener(up);
+        this.keyboard.addEventListener(down);
+        this.keyboard.addEventListener(space);
     }
 
     public void keyPressed(KeyboardEvent e){
@@ -83,5 +82,9 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
 
     }
 
+
+    public GeneratePosition getPosition(){
+        return this.position;
+    }
 
 }
