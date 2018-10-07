@@ -17,11 +17,10 @@ public class ObjectFactory {
 
         throw new ExecutionControl.NotImplementedException();
     }
+
     
     /*
     public Boss getNewBoss() {
-
-
      }
       */
 }
