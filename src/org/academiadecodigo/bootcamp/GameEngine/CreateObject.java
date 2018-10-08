@@ -27,58 +27,25 @@ public class CreateObject {
     public void move(Directions direction, double cell) throws Exception{
         switch (direction){
             case UP:
-                moveUp(cell);
+                moveDirection(0, -1);
                 break;
             case DOWN:
-                moveDown(cell);
+                moveDirection(0, 1);
                 break;
             case LEFT:
-                moveLeft(cell);
+                moveDirection(-1, 0);
                 break;
             case RIGHT:
-                moveRight(cell);
+                moveDirection(1, 0);
                 break;
         }
     }
 
-    private void moveUp(double cell) throws Exception{
-        po.setRow(po.getRow()-cell);
-        for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(1);
-            object.delete();
-            object.translate(0,-1);
-            object.fill();
-        }
-    }
-
-    private void moveDown(double cell) throws Exception{
-        po.setRow(po.getRow()+cell);
-        for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(1);
-            object.delete();
-            object.translate(0,1);
-            object.fill();
-        }
-    }
-
-    private void moveLeft(double cell) throws Exception{
-        po.setCol(po.getCol()-cell);
-        for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(1);
-            object.delete();
-            object.translate(-1,0);
-            object.fill();
-        }
-    }
-
-    private void moveRight(double cell) throws Exception{
-        po.setRow(po.getCol()+cell);
-        for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(1);
-            object.delete();
-            object.translate(1,0);
-            object.fill();
-        }
+    private void moveDirection(int x, int y) throws Exception{
+        Thread.sleep(1);
+        object.delete();
+        object.translate(x,y);
+        object.fill();
     }
 
 }
