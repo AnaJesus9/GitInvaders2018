@@ -4,7 +4,7 @@ public class Position extends Grid {
 
     private double row;
     private double col;
-    private int CELLSIZE = 10;
+    private int CELLSIZE = 40;
 
     public Position(double row, double col){
         this.row = row;
@@ -30,5 +30,13 @@ public class Position extends Grid {
 
     public int getCELLSIZE() {
         return CELLSIZE;
+    }
+
+    public void setCol(double col) {
+        this.col = col;
+    }
+
+    public void setRow(double row) {
+        this.row = row;
     }
 }

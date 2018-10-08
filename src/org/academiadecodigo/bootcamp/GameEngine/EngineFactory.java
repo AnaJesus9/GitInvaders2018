@@ -7,7 +7,7 @@ public class EngineFactory {
     }
 
     public static void object(double row, double col){
-        CreatObject object = new CreatObject(row,col);
+        CreateObject object = new CreateObject(row,col);
         object.init();
     }
 

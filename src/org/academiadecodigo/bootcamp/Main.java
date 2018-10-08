@@ -1,36 +1,32 @@
 package org.academiadecodigo.bootcamp;
 
+import org.academiadecodigo.bootcamp.GameEngine.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
-import org.academiadecodigo.bootcamp.GameEngine.CreatObject;
+import org.academiadecodigo.bootcamp.GameEngine.CreateObject;
+
+import javax.sound.midi.Soundbank;
 
 public class Main {
     public static void main(String[] args){
 
-        EngineFactory.field(45,80);
+        EngineFactory.field(14,14);
 
-        EngineFactory.object(22.5,2.5);
+        EngineFactory.object(7,0.35);
 
 
-        CreatObject[] obj = new CreatObject[5];
-
-        double row = 7.5;
-
-        for(int i =0; i < 5; i++){
-            obj[i] = new CreatObject(row, 75);
-            obj[i].init();
-            row += 7.5;
-        }
+        CreateObject obj = new CreateObject(7,11);
+        obj.init();
 
         try {
-            for(int i = 0; i < obj.length; i++){
-                obj[i].move();
-                obj[i].hide();
+            for(int i = 0; i < 10; i++){
+                obj.move(Directions.LEFT,10);
+                obj.move(Directions.UP,4);
+                obj.move(Directions.RIGHT,10);
+                obj.move(Directions.DOWN,4);
             }
         }catch (Exception e){
             System.out.printf("2");
         }
-
-
 
     }
 
