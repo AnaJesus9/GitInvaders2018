@@ -24,7 +24,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
     public void move(Directions direction){
-        getPosition().movePosition(direction, 1);
+        getPosition().move(direction);
 
     }
 
