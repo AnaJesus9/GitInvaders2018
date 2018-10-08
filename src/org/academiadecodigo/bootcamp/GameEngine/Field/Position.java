@@ -1,6 +1,7 @@
-package org.academiadecodigo.bootcamp.GameEngine;
+package org.academiadecodigo.bootcamp.GameEngine.Field;
 
-public class Position extends Grid {
+
+public class Position implements Grid {
 
     private double row;
     private double col;

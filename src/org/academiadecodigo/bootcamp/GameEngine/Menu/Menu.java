@@ -1,25 +1,32 @@
-package org.academiadecodigo.bootcamp.GameEngine;
+package org.academiadecodigo.bootcamp.GameEngine.Menu;
 
+import org.academiadecodigo.bootcamp.GameEngine.Field.Grid;
 import org.academiadecodigo.simplegraphics.graphics.Color;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
-public class Canvas extends Grid{
+public class Menu implements Grid {
 
     public int row;
     public int col;
     public int CELLSIZE = 40;
-    public Rectangle field;
+    private Text menu;
 
-    public Canvas(int row, int col){
+    public Menu(int row, int col){
         this.row = row;
         this.col = col;
     }
 
     public void init(){
-        this.field = new Rectangle(0,0,getWidth(),getHeight());
-        this.field.setColor(Color.ORANGE);
-        this.field.fill();
+        menu = new Text(6.5*40,6.5*40, "teste0");
+        menu.setColor(Color.WHITE);
+        menu.draw();
     }
+
+    public void delete(){
+        menu.delete();
+    }
+
+
 
     public double getRow(){
         return row;

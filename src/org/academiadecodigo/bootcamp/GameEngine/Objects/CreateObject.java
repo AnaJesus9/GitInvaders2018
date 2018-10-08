@@ -1,8 +1,11 @@
-package org.academiadecodigo.bootcamp.GameEngine;
+package org.academiadecodigo.bootcamp.GameEngine.Objects;
 
+import org.academiadecodigo.bootcamp.GameEngine.Direction.Direction;
+import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
+import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class CreateObject {
+public class CreateObject extends Direction {
 
     private Position po;
     private Rectangle object;
@@ -25,6 +28,7 @@ public class CreateObject {
     }
 
     public void move(Directions direction) throws Exception{
+
         switch (direction){
             case UP:
                 moveDirection(0, -1);
@@ -41,7 +45,7 @@ public class CreateObject {
         }
     }
 
-    private void moveDirection(int x, int y) throws Exception{
+    public void moveDirection(int x, int y) throws Exception{
         Thread.sleep(1);
         object.delete();
         object.translate(x,y);
