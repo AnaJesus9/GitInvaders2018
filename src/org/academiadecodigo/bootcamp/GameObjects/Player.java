@@ -7,7 +7,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Player extends GameObjects implements Shootable, KeyboardHandler {
-    private GeneratePosition position;
+    private CreateObject position;
     private int damage;
     private int lives;
     private boolean destroyed;
@@ -15,7 +15,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     private Keyboard keyboard;
 
     public Player(){
-        this.position = new GeneratePosition(5, 0); //Requires implemented position class to add proper parameters
+        this.position = new CreateObject(5, 0); //Requires implemented position class to add proper parameters
         this.damage = 1;
         this.lives = 3;
         this.destroyed = false;
@@ -24,12 +24,17 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
     public void move(Directions direction){
-        getPosition().move(direction);
+        try{
+            position.move(direction);
+        }catch(Exception e){
+            System.out.println(e);
+        }
 
     }
 
     public Bullet shoot(){
-        return new Bullet( this.getPosition(), this);
+        //return new Bullet( this.getPosition(), this);
+        return null;
     }
 
 
@@ -50,6 +55,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
     private void implementKeys(){
+        keyboard = new Keyboard(this);
         KeyboardEvent up = new KeyboardEvent();
         up.setKey(KeyboardEvent.KEY_UP);
         up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -62,9 +68,9 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
         space.setKey(KeyboardEvent.KEY_SPACE);
         space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        this.keyboard.addEventListener(up);
-        this.keyboard.addEventListener(down);
-        this.keyboard.addEventListener(space);
+        keyboard.addEventListener(up);
+        keyboard.addEventListener(down);
+        keyboard.addEventListener(space);
     }
 
     public void keyPressed(KeyboardEvent e){
@@ -84,7 +90,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
 
-    public GeneratePosition getPosition(){
+    public CreateObject getPosition(){
         return this.position;
     }
 
