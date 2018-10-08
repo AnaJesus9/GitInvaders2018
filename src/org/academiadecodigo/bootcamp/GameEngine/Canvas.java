@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 public class Canvas extends Grid{
@@ -15,8 +16,9 @@ public class Canvas extends Grid{
     }
 
     public void init(){
-        this.field = new Rectangle(10,10,getWidth(),getHeight());
-        this.field.draw();
+        this.field = new Rectangle(0,0,getWidth(),getHeight());
+        this.field.setColor(Color.ORANGE);
+        this.field.fill();
     }
 
     public double getRow(){

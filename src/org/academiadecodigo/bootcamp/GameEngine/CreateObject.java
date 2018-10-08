@@ -44,32 +44,40 @@ public class CreateObject {
     private void moveUp(double cell) throws Exception{
         po.setRow(po.getRow()-cell);
         for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(50);
+            Thread.sleep(1);
+            object.delete();
             object.translate(0,-1);
+            object.fill();
         }
     }
 
     private void moveDown(double cell) throws Exception{
         po.setRow(po.getRow()+cell);
         for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(50);
+            Thread.sleep(1);
+            object.delete();
             object.translate(0,1);
+            object.fill();
         }
     }
 
     private void moveLeft(double cell) throws Exception{
         po.setCol(po.getCol()-cell);
         for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(50);
+            Thread.sleep(1);
+            object.delete();
             object.translate(-1,0);
+            object.fill();
         }
     }
 
     private void moveRight(double cell) throws Exception{
         po.setRow(po.getCol()+cell);
         for(int i = 0; i < (cell*po.getCELLSIZE()); i++){
-            Thread.sleep(50);
+            Thread.sleep(1);
+            object.delete();
             object.translate(1,0);
+            object.fill();
         }
     }
 
