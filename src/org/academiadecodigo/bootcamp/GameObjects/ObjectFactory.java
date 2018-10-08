@@ -8,19 +8,18 @@ public class ObjectFactory {
 
     public Enemy getNewEnemy() {
 
-        //What's the enemy method signature?
-        throw new ExecutionControl.NotImplementedException();
-
+        return new Enemy(row, col);
     }
 
     public Player getNewPlayer() {
 
-        throw new ExecutionControl.NotImplementedException();
+        return new Player();
     }
 
 
     /*
     public Boss getNewBoss() {
+
      }
       */
 }
