@@ -24,7 +24,7 @@ public class CreateObject {
         object.draw();
     }
 
-    public void move(Directions direction, double cell) throws Exception{
+    public void move(Directions direction) throws Exception{
         switch (direction){
             case UP:
                 moveDirection(0, -1);
