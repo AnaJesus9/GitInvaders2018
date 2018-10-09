@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.GameObjects;
-import org.academiadecodigo.bootcamp.GameEngine.*;
+import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
+
 public abstract class GameObjects {
 
     public abstract void move(Directions direction);

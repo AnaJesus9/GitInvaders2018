@@ -31,7 +31,7 @@ public class CreateObject extends Direction {
         object.draw();
     }
 
-    public void move(Directions direction) throws Exception{
+    public void move(Directions direction) {
 
         switch (direction){
             case UP:
@@ -49,11 +49,15 @@ public class CreateObject extends Direction {
         }
     }
 
-    public void moveDirection(int x, int y) throws Exception{
-        Thread.sleep(1);
+    public void moveDirection(int x, int y) {
+        //Thread.sleep(1);
         object.delete();
         object.translate(x,y);
         object.draw();
+    }
+
+    public Position getPo(){
+        return po;
     }
 
 }

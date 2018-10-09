@@ -1,21 +1,22 @@
 package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
-import org.academiadecodigo.bootcamp.GameEngine.Position;
+import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
 import org.academiadecodigo.bootcamp.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp.GameObjects.Shootable;
 
 public abstract class Enemy extends GameObjects implements Shootable {
 
-    private Position position;
+    private CreateObject object;
     private int health;
     private boolean destroyed;
     private int damage;
 
 
-    public Enemy(Position position){
+    public Enemy(CreateObject object){
         this.health = 100;
         this.destroyed = false;
-        this.position = position;
+        this.object = object;
 
     }
 
@@ -37,12 +38,12 @@ public abstract class Enemy extends GameObjects implements Shootable {
     }
 
     public Position getPosition() {
-        return position;
+        return object.getPo();
     }
 
-    public void setPosition(Position position) {
-        this.position = position;
-    }
+    //public void setPosition(Position position) {
+        //this.position = position;
+    //}
 
 
 }
