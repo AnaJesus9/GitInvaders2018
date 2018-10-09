@@ -1,23 +1,19 @@
-package org.academiadecodigo.bootcamp.GameEngine;
+package org.academiadecodigo.bootcamp.GameEngine.Field;
 
+import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
-public class Canvas extends Grid{
+public class Canvas extends GameConfigs implements Grid {
 
-    public int row;
-    public int col;
-    public int CELLSIZE = 40;
+    public double row = GameConfigs.ROW;
+    public double col = GameConfigs.COL;
+    public int CELLSIZE = GameConfigs.CELLSIZE;
     public Rectangle field;
-
-    public Canvas(int row, int col){
-        this.row = row;
-        this.col = col;
-    }
 
     public void init(){
         this.field = new Rectangle(0,0,getWidth(),getHeight());
-        this.field.setColor(Color.ORANGE);
+        this.field.setColor(Color.BLACK);
         this.field.fill();
     }
 
