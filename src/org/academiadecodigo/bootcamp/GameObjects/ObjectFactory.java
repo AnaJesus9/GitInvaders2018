@@ -1,6 +1,5 @@
-package org.academiadecodigo.bootcamp.GameObjects;
+/*package org.academiadecodigo.bootcamp.GameObjects;
 
-import jdk.jshell.spi.ExecutionControl;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Enemy;
 
 public class ObjectFactory {
@@ -17,9 +16,9 @@ public class ObjectFactory {
     }
 
 
-    /*
     public Boss getNewBoss() {
 
      }
-      */
+
 }
+*/

@@ -1,13 +1,10 @@
 package org.academiadecodigo.bootcamp.GameObjects;
 
-import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
 
-import javax.swing.text.Position;
-
-public class Bullet extends Game {
+public class Bullet extends GameObjects {
 
     private int damage;
     private CreateObject object;
@@ -16,13 +13,23 @@ public class Bullet extends Game {
 
     public Bullet(Position position, GameObjects target){
         this.damage = 1;
-        this.object = new CreateObject(position.getRow(), position.getCol(),1);
+        this.object = new CreateObject(position,1);
+        this.object.init();
         this.destroyed = false;
         this.target = target;
+        move(Directions.RIGHT);
     }
 
     public void move(Directions direction){
-        object.move(direction);
+        for(int i = 0; i< 10; i++){
+            try{
+                object.move(direction, 6);
+            }catch (Exception e){
+                System.out.println("Bullet move");
+            }
+
+        }
+
     }
 
     public void hit(int damage){

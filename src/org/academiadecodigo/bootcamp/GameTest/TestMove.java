@@ -24,12 +24,12 @@ public class TestMove {
             for(int u = 0; u < 500; u++){
                 for (int e = 0; e < 15*40; e++){
                     for(int i = 0; i < obj.length; i++){
-                        obj[i].move(Directions.LEFT);
+                        obj[i].move(Directions.LEFT,2);
                     }
                 }
                 for (int e = 0; e < 15*40; e++){
                     for(int i = 0; i < obj.length; i++){
-                        obj[i].move(Directions.RIGHT);
+                        obj[i].move(Directions.RIGHT,2);
                     }
                 }
             }
