@@ -1,13 +1,15 @@
 package org.academiadecodigo.bootcamp.GameObjects;
 
-import org.academiadecodigo.bootcamp.GameEngine.*;
+import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
+import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Player extends GameObjects implements Shootable, KeyboardHandler {
-    private GeneratePosition position;
+    private CreateObject object;
     private int damage;
     private int lives;
     private boolean destroyed;
@@ -15,7 +17,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     private Keyboard keyboard;
 
     public Player(){
-        this.position = new GeneratePosition(5, 0); //Requires implemented position class to add proper parameters
+        this.object = new CreateObject(5, 0,0); //Requires implemented position class to add proper parameters
         this.damage = 1;
         this.lives = 3;
         this.destroyed = false;
@@ -23,8 +25,8 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
         implementKeys();
     }
 
-    public void move(Directions direction){
-        getPosition().movePosition(direction, 1);
+    public void move(Directions direction) {
+        object.move(direction);
 
     }
 
@@ -84,8 +86,8 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
 
-    public GeneratePosition getPosition(){
-        return this.position;
+    public Position getPosition(){
+        return object.getPo();
     }
 
 }

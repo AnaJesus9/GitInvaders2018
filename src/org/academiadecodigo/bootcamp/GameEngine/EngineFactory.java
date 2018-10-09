@@ -1,13 +1,17 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
+import org.academiadecodigo.bootcamp.GameEngine.Field.Canvas;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
+
 public class EngineFactory {
-    public static void field(int row, int col){
-        Canvas filed = new Canvas(row,col);
+
+    public static void field(){
+        Canvas filed = new Canvas();
         filed.init();
     }
 
-    public static void object(double row, double col){
-        CreatObject object = new CreatObject(row,col);
+    public static void object(double row, double col, int resource){
+        CreateObject object = new CreateObject(row,col, resource);
         object.init();
     }
 
