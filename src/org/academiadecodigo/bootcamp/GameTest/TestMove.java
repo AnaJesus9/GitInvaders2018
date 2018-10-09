@@ -9,10 +9,10 @@ public class TestMove {
 
         EngineFactory.field();
 
-        EngineFactory.object(4.5,0.35);
+        EngineFactory.object(6,0.35, 0);
 
 
-        CreateObject[] obj = {new CreateObject(0.5,20),new CreateObject(2.5,20),new CreateObject(4.5,20), new CreateObject(6.5,20), new CreateObject(8.5,20)};
+        CreateObject[] obj = {new CreateObject(2,20,1),new CreateObject(4,20,1),new CreateObject(6,20,1 ), new CreateObject(8,20,1), new CreateObject(10,20,1)};
 
         obj[0].init();
         obj[1].init();

@@ -13,7 +13,7 @@ public class Canvas extends GameConfigs implements Grid {
 
     public void init(){
         this.field = new Rectangle(0,0,getWidth(),getHeight());
-        this.field.setColor(Color.ORANGE);
+        this.field.setColor(Color.BLACK);
         this.field.fill();
     }
 

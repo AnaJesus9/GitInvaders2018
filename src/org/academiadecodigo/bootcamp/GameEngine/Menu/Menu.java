@@ -20,6 +20,7 @@ public class Menu implements Grid {
         menu = new Text(6.5*40,6.5*40, "teste0");
         menu.setColor(Color.WHITE);
         menu.draw();
+        menu.grow(120,60);
     }
 
     public void delete(){

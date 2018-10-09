@@ -10,8 +10,8 @@ public class EngineFactory {
         filed.init();
     }
 
-    public static void object(double row, double col){
-        CreateObject object = new CreateObject(row,col);
+    public static void object(double row, double col, int resource){
+        CreateObject object = new CreateObject(row,col, resource);
         object.init();
     }
 

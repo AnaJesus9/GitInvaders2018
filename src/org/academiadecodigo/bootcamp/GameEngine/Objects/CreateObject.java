@@ -4,19 +4,23 @@ import org.academiadecodigo.bootcamp.GameEngine.Direction.Direction;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class CreateObject extends Direction {
 
     private Position po;
-    private Rectangle object;
+    private Picture object;
+    private String[] resource = {"resources/player.png", "resources/enemy.png"};
+    private int resources;
 
-    public CreateObject(double row, double col){
+    public CreateObject(double row, double col, int resources){
         this.po = new Position(row, col);
+        this.resources = resources;
     }
 
     public void init(){
-        this.object = new Rectangle(po.getWidth(),po.getHeight(),po.getCELLSIZE(),po.getCELLSIZE());
-        this.object.fill();
+        this.object = new Picture(po.getWidth(),po.getHeight(),resource[resources]);
+        this.object.draw();
     }
 
     public void hide(){
@@ -49,7 +53,7 @@ public class CreateObject extends Direction {
         Thread.sleep(1);
         object.delete();
         object.translate(x,y);
-        object.fill();
+        object.draw();
     }
 
 }
