@@ -6,9 +6,11 @@ public class Main {
     public static void main(String[] args){
         EngineFactory.field();
         Game game = new Game();
-
-        game.start();
-
+        try{
+            game.start();
+        }catch (Exception e){
+            System.out.println("tes");
+        }
     }
 
 }

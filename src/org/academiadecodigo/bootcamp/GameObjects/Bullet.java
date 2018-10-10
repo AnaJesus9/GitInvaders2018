@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.GameObjects;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
+import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 
 public class Bullet extends GameObjects {
@@ -11,11 +12,9 @@ public class Bullet extends GameObjects {
     private boolean destroyed;
     private GameObjects target;
 
-    public Bullet(Position position, GameObjects target) {
-
+    public Bullet(Position position, GameObjects target, int resource) {
         this.damage = 1;
-        this.object = new Graphics(position.getRow(),0, 1);
-        this.object.init();
+        this.object = new Graphics(position.getRow(),0, resource);
         this.destroyed = false;
         this.target = target;
 
@@ -23,25 +22,25 @@ public class Bullet extends GameObjects {
     }
 
     public void move(Directions direction) {
-        try {
-            if(!(object.getPo().getCol() == 21)){
-                object.move(direction, 1);
-                return;
-            }
-            destroyed();
-        } catch (Exception e) {
-            System.out.println("Bullet move");
+        if(isDestroyed()) {
+            return;
         }
-
+           if(!(object.getPo().getCol() == GameConfigs.COL-1)){
+               object.move(direction, 10);
+               return;
+           }
+           destroyed();
     }
 
     public void hit() {
+        getGraphics().hide();
         this.destroyed = true;
     }
 
     public void destroyed() {
         object.hide();
         this.destroyed = true;
+        System.out.println("destroyed");
     }
 
     @Override

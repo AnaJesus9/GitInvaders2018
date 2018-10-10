@@ -1,13 +1,12 @@
 package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
+import org.academiadecodigo.bootcamp.GameEngine.Menu.Life;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
-
-import java.util.LinkedList;
 
 public class Game implements KeyboardHandler {
     private Player player;
@@ -21,6 +20,16 @@ public class Game implements KeyboardHandler {
         this.keyboard = new Keyboard(this);
         implementKeys();
         createEnemies();
+
+    }
+
+    public void lives(){
+        double o = 0.2;
+        for(int i = 0; i < 4; i++){
+            Life life = new Life(o);
+            life.init();
+            o+=0.7;
+        }
 
     }
     //Create enemy instances and add to the array
@@ -38,10 +47,19 @@ public class Game implements KeyboardHandler {
         return true; //return true is all enemies are destroyed
     }
 
-    public void start(){
+    public void start() throws Exception{
+        lives();
         while(true){
 
+            Thread.sleep(10);
+            player.moveBullet();
+
             for(  Ship enemy : enemies){
+
+                if(enemy.isDestroyed()){
+                    continue;
+                }
+                //System.out.println(enemy.isDestroyed());
                 enemy.move();
             }
 
@@ -51,9 +69,12 @@ public class Game implements KeyboardHandler {
 
     public void checkCollisions(){
 
-        for(GameObjects enemy : enemies){
+        for(Ship enemy : enemies){
             if( enemy.isDestroyed()){
                 continue;
+            }
+            if(enemy.getGraphics().getPo().getCol() == 0){
+                enemy.hit();
             }
             for(Bullet bullet : player.getBullets()){
                 if( bullet != null){
@@ -62,8 +83,10 @@ public class Game implements KeyboardHandler {
                     }
 
                     if( compare(enemy,bullet) ){
+                        System.out.println("Collision");
                         enemy.hit();
-                        bullet.destroyed();
+                        bullet.hit();
+                        System.out.println(bullet.isDestroyed());
                     }
                 }
             }
@@ -71,7 +94,7 @@ public class Game implements KeyboardHandler {
 
     }
 
-    public boolean compare(GameObjects enemy, Bullet bullet){
+    public boolean compare(Ship enemy, Bullet bullet){
         return (enemy.getGraphics().getPo().getCol() == bullet.getGraphics().getPo().getCol() &&
                 enemy.getGraphics().getPo().getRow() == bullet.getGraphics().getPo().getRow());
     }
@@ -109,6 +132,5 @@ public class Game implements KeyboardHandler {
     public void keyReleased(KeyboardEvent e){
 
     }
-
 
 }

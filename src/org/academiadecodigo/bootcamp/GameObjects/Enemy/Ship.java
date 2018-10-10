@@ -12,7 +12,6 @@ public class Ship extends Enemy {
                 GameConfigs.COL -1,
                 1));
 
-
     }
 
 
@@ -22,11 +21,7 @@ public class Ship extends Enemy {
 
     @Override
     public void hit() {
-
-        setDestroyed(true);
-
-        getObject().hide();
-
+        setDestroyed();
     }
 
 
@@ -39,4 +34,8 @@ public class Ship extends Enemy {
         return super.getGraphics();
     }
 
+
+    public void hide(){
+        getObject().hide();
+    }
 }

@@ -11,7 +11,7 @@ public class Graphics extends Direction {
 
     private Position po;
     private Picture object;
-    private String[] resource = {"resources/player.png", "resources/enemy.png"};
+    private String[] resource = {"resources/player.png", "resources/enemies.png", "resources/bullets.png"};
     private int resources;
 
     public Graphics(double row, double col, int resources){
@@ -39,32 +39,32 @@ public class Graphics extends Direction {
         object.draw();
     }
 
-    public void move(Directions direction, int veloci){
+    public void move(Directions direction, int speed){
         switch (direction){
             case UP:
                 if(!(po.getRow() < 1)){
-                    moveDirection(0, -veloci);
-                    getPos(veloci, direction);
+                    moveDirection(0, -speed);
+                    getPos(speed, direction);
                 }
                 break;
             case DOWN:
-                if(!(po.getRow() > 10)){
-                    moveDirection(0, veloci);
-                    getPos(veloci, direction);
+                if(!(po.getRow() >= GameConfigs.ROW-1)){
+                    moveDirection(0, speed);
+                    getPos(speed, direction);
                     break;
                 }
                 break;
             case LEFT:
-                if(!(po.getCol() < GameConfigs.PADDING_PLAYER)){
-                    moveDirection(-veloci, 0);
-                    getPos(veloci, direction);
+                if(!(po.getCol() < 1)){
+                    moveDirection(-speed, 0);
+                    getPos(speed, direction);
                     break;
                 }
                 break;
             case RIGHT:
-                if(!(po.getCol() > GameConfigs.COL-4)){
-                    moveDirection(veloci, 0);
-                    getPos(veloci, direction);
+                if(!(po.getCol() >= GameConfigs.COL-1)){
+                    moveDirection(speed, 0);
+                    getPos(speed, direction);
                     break;
                 }
                 break;
@@ -72,9 +72,7 @@ public class Graphics extends Direction {
     }
 
     public void moveDirection(int x, int y){
-        object.delete();
         object.translate(x,y);
-        object.draw();
     }
 
     public Position getPo(){

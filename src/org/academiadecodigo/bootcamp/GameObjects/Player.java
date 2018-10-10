@@ -9,12 +9,11 @@ public class Player extends GameObjects implements Shootable {
     private int damage;
     private int lives;
     private boolean destroyed;
-    private Bullet[] bullets = new Bullet[20];
+    private Bullet[] bullets = new Bullet[100];
 
 
     public Player(){
         this.object = new Graphics(5, 0,0); //Requires implemented position class to add proper parameters
-        this.object.init();
         this.damage = 1;
         this.lives = 3;
         this.destroyed = false;
@@ -25,22 +24,26 @@ public class Player extends GameObjects implements Shootable {
     }
 
     public void shoot(){
-        int i = 0;
-        while(bullets[i] != null && i < 5){
+        for(int i = 0; i < bullets.length; i++){
+            if( bullets[i] != null && bullets[i].isDestroyed()){
+                bullets[i] = null;
+            }
+
             System.out.println(i);
-            i++;
+            if(bullets[i] == null){
+                bullets[i] = new Bullet( new Position(getPosition().getRow(), 0), this, 2);
+                break;
+            }
         }
-        if(i < 20)
-            bullets[i] = new Bullet( getPosition(), this);
     }
 
     public void moveBullet(){
         for(int i = 0; i < bullets.length; i++){
+            if(bullets[i] != null && bullets[i].isDestroyed()) {
+                continue;
+            }
             if(bullets[i] != null){
                 bullets[i].move(Directions.RIGHT);
-                if(bullets[i].isDestroyed()){
-                    bullets[i] = null;
-                }
             }
         }
     }
@@ -60,8 +63,6 @@ public class Player extends GameObjects implements Shootable {
     private void destroy(){
         this.destroyed = true;
     }
-
-
 
 
     public Position getPosition(){

@@ -26,17 +26,18 @@ public abstract class Enemy extends GameObjects implements Shootable {
 
     @Override
     public void move(Directions direction) {
-        try {
-            if (timesToMove == 0) {
-                this.direction = getRandomDirection();
-            }
-            direction = this.direction;
-            Thread.sleep(80);
-            object.move(direction, 1);
-            timesToMove--;
-        } catch (Exception e) {
-            e.printStackTrace();
+
+        if(isDestroyed()){
+            return;
         }
+
+        if (timesToMove == 0) {
+            this.direction = getRandomDirection();
+        }
+        direction = this.direction;
+        object.move(direction, 1);
+        timesToMove--;
+
 
     }
 
@@ -63,8 +64,9 @@ public abstract class Enemy extends GameObjects implements Shootable {
         return destroyed;
     }
 
-    public void setDestroyed(boolean destroyed) {
-        this.destroyed = destroyed;
+    public void setDestroyed() {
+        getGraphics().hide();
+        this.destroyed = true;
     }
 
     public Graphics getObject() {

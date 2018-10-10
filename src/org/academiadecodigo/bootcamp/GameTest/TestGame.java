@@ -9,6 +9,6 @@ public class TestGame {
         EngineFactory.field();
         Game g = new Game();
 
-        g.start();
+
     }
 }
