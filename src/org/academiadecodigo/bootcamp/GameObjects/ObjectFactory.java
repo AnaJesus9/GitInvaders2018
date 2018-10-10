@@ -1,12 +1,11 @@
 package org.academiadecodigo.bootcamp.GameObjects;
 
-import jdk.jshell.spi.ExecutionControl;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Enemy;
 
 public class ObjectFactory {
 
 
-    public Enemy getNewEnemy() {
+    /*public Enemy getNewEnemy() {
 
         return new Enemy(row, col);
     }
@@ -14,7 +13,7 @@ public class ObjectFactory {
     public Player getNewPlayer() {
 
         return new Player();
-    }
+    }*/
 
 
     /*

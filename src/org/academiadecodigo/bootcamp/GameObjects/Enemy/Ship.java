@@ -8,8 +8,8 @@ public class Ship extends Enemy {
 
     private CreateObject object;
 
-    public Ship( CreateObject position){
-        super(position);
+    public Ship( CreateObject object){
+        super(object);
         this.object = new CreateObject(5, 2, 1);
     }
 
@@ -35,7 +35,8 @@ public class Ship extends Enemy {
 
     @Override
     public Bullet shoot() {
-        return new Bullet();
+        //return new Bullet();
+        return null;
     }
 
 }

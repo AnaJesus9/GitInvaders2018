@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.GameEngine.Objects;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Direction;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
+import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -12,10 +13,12 @@ public class CreateObject extends Direction {
     private Picture object;
     private String[] resource = {"resources/player.png", "resources/enemy.png"};
     private int resources;
+    private int pixelCounter;
 
     public CreateObject(double row, double col, int resources){
         this.po = new Position(row, col);
         this.resources = resources;
+        this.pixelCounter = 0;
     }
 
     public void init(){
@@ -49,11 +52,17 @@ public class CreateObject extends Direction {
         }
     }
 
-    public void moveDirection(int x, int y) {
+    public void moveDirection(int col, int row) {
         //Thread.sleep(1);
-        object.delete();
-        object.translate(x,y);
+        //object.delete();
+        object.translate(col,row);
         object.draw();
+        pixelCounter++;
+        if(pixelCounter == GameConfigs.CELLSIZE) {
+            po.setCol(po.getCol() + col);
+            po.setRow(po.getRow() + row);
+            pixelCounter = 0;
+        }
     }
 
     public Position getPo(){

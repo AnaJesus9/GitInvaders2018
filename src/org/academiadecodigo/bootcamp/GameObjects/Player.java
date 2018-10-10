@@ -8,6 +8,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+
 public class Player extends GameObjects implements Shootable, KeyboardHandler {
     private CreateObject object;
     private int damage;
@@ -21,7 +22,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
         this.damage = 1;
         this.lives = 3;
         this.destroyed = false;
-
+        keyboard = new Keyboard(this);
         implementKeys();
     }
 

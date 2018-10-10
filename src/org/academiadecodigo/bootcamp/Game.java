@@ -18,7 +18,7 @@ public class Game {
     //Create enemy instances and add to the array
     private void createEnemies(){
         for( int i = 0; i < NUMBER_OF_ENEMIES; i++){
-            this.gameObjects[i] = ObjectFactory.getNewEnemy();
+            //this.gameObjects[i] = ObjectFactory.getNewEnemy();
         }
     }
     private boolean checkEnemies(){
