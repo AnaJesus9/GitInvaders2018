@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.GameEngine.Field;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.simplegraphics.graphics.Text;
 
 public class Canvas extends GameConfigs implements Grid {
 

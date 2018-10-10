@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.GameObjects;
+/*package org.academiadecodigo.bootcamp.GameObjects;
 
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Enemy;
 
@@ -16,9 +16,9 @@ public class ObjectFactory {
     }*/
 
 
-    /*
     public Boss getNewBoss() {
 
      }
-      */
+
 }
+*/

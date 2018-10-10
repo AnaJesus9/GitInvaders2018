@@ -24,18 +24,12 @@ public class TestMove {
             for(int u = 0; u < 500; u++){
                 for (int e = 0; e < 15*40; e++){
                     for(int i = 0; i < obj.length; i++){
-                        Thread.sleep(2);
-                        System.out.println(obj[i].getPo().getCol() + " COL");
-                        System.out.println(obj[i].getPo().getRow() + " ROW");
-                        obj[i].move(Directions.LEFT);
+                        obj[i].move(Directions.LEFT,2);
                     }
                 }
                 for (int e = 0; e < 15*40; e++){
                     for(int i = 0; i < obj.length; i++){
-                        Thread.sleep(2);
-                        System.out.println(obj[i].getPo().getCol() + " COL");
-                        System.out.println(obj[i].getPo().getRow() + " ROW");
-                        obj[i].move(Directions.RIGHT);
+                        obj[i].move(Directions.RIGHT,2);
                     }
                 }
             }

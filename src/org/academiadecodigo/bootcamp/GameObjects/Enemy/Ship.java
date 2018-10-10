@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.GameObjects.Enemy;
+/*package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
@@ -39,4 +39,4 @@ public class Ship extends Enemy {
         return null;
     }
 
-}
+}*/
