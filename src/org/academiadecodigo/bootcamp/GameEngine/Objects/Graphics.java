@@ -47,21 +47,21 @@ public class Graphics {
                 }
                 break;
             case DOWN:
-                if(!(po.getRow() > 10)){
+                if(!(po.getRow() > 12)){
                     moveDirection(0, veloci);
                     getPos(veloci, direction);
                     break;
                 }
                 break;
             case LEFT:
-                if(!(po.getCol() < GameConfigs.PADDING_PLAYER)){
+                if(!(po.getCol() < 0)){
                     moveDirection(-veloci, 0);
                     getPos(veloci, direction);
                     break;
                 }
                 break;
             case RIGHT:
-                if(!(po.getCol() > GameConfigs.COL-4)){
+                if(!(po.getCol() > GameConfigs.COL)){
                     moveDirection(veloci, 0);
                     getPos(veloci, direction);
                     break;

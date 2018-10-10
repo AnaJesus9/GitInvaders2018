@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.GameObjects;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
+import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameEngine.Resource;
 
@@ -24,16 +25,11 @@ public class Bullet extends GameObjects {
     }
 
     public void move(Directions direction) {
-        try {
-            if(!(object.getPo().getCol() == 21)){
-                object.move(direction, 1);
-                return;
-            }
-            destroyed();
-        } catch (Exception e) {
-            System.out.println("Bullet move");
+        if(!(object.getPo().getCol() == GameConfigs.COL-1)){
+            object.move(direction, 1);
+            return;
         }
-
+        destroyed();
     }
 
     public void hit(int damage) {

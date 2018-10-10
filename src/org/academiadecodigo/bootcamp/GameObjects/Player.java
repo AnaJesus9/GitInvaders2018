@@ -14,7 +14,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     private int damage;
     private int lives;
     private boolean destroyed;
-    private Bullet[] bullets = new Bullet[20];
+    private Bullet[] bullets = new Bullet[5];
 
     private Keyboard keyboard;
 
@@ -38,7 +38,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
             System.out.println(i);
             i++;
         }
-        if(i < 20)
+        if(i <= bullets.length)
             bullets[i] = new Bullet( getPosition(), this);
     }
 
