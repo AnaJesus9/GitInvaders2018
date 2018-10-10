@@ -5,7 +5,7 @@ import org.academiadecodigo.bootcamp.GameObjects.Enemy.Enemy;
 public class ObjectFactory {
 
 
-    /*public Enemy getNewEnemy() {
+    public Enemy getNewEnemy() {
 
         return new Enemy(row, col);
     }
@@ -13,7 +13,7 @@ public class ObjectFactory {
     public Player getNewPlayer() {
 
         return new Player();
-    }*/
+    }
 
 
     public Boss getNewBoss() {

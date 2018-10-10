@@ -1,22 +1,25 @@
-/*package org.academiadecodigo.bootcamp.GameObjects.Enemy;
+package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
+import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
+import org.academiadecodigo.bootcamp.GameEngine.Random;
 import org.academiadecodigo.bootcamp.GameObjects.Bullet;
 
 public class Ship extends Enemy {
 
-    private CreateObject object;
 
-    public Ship( CreateObject object){
-        super(object);
-        this.object = new CreateObject(5, 2, 1);
+    public Ship(){
+        super(new CreateObject((double)Random.getRandomNumberWithZero(GameConfigs.ROW),
+                GameConfigs.COL -1,
+                1));
+
+
     }
 
-    @Override
-    public void move(Directions direction) {
-        object.move(direction);
-        object.move(direction);
+
+    public void move() {
+        move(getDirection());
     }
 
     @Override
@@ -27,7 +30,7 @@ public class Ship extends Enemy {
         if(getHealth() == 0){
             setDestroyed(true);
 
-            object.hide();
+            getObject().hide();
         }
 
     }
@@ -39,4 +42,4 @@ public class Ship extends Enemy {
         return null;
     }
 
-}*/
+}
