@@ -11,33 +11,30 @@ public class Bullet extends GameObjects {
     private boolean destroyed;
     private GameObjects target;
 
-    public Bullet(Position position, GameObjects target){
+    public Bullet(Position position, GameObjects target) {
         this.damage = 1;
-        this.object = new CreateObject(position,1);
+        this.object = new CreateObject(position, 1);
         this.object.init();
         this.destroyed = false;
         this.target = target;
         move(Directions.RIGHT);
     }
 
-    public void move(Directions direction){
-        for(int i = 0; i< 10; i++){
-            try{
-                object.move(direction, 6);
-            }catch (Exception e){
-                System.out.println("Bullet move");
-            }
-
+    public void move(Directions direction) {
+        try {
+            object.move(direction, 6);
+        } catch (Exception e) {
+            System.out.println("Bullet move");
         }
 
     }
 
-    public void hit(int damage){
+    public void hit(int damage) {
         this.damage = damage;
         this.destroyed = true;
     }
 
-    public boolean isDestroyed(){
+    public boolean isDestroyed() {
         return this.destroyed;
     }
 }
