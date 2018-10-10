@@ -1,31 +1,32 @@
 package org.academiadecodigo.bootcamp.GameEngine.Objects;
 
-import org.academiadecodigo.bootcamp.GameEngine.Direction.Direction;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
-import org.academiadecodigo.simplegraphics.graphics.Rectangle;
+import org.academiadecodigo.bootcamp.GameEngine.Resource;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class Graphics extends Direction {
+public class Graphics {
 
     private Position po;
     private Picture object;
-    private String[] resource = {"resources/player.png", "resources/enemy.png"};
+    private Resource path;
     private int resources;
 
-    public Graphics(double row, double col, int resources){
+    public Graphics(double row, double col, Resource path){
+        this.path = path;
         this.po = new Position(row, col);
         this.resources = resources;
     }
 
-    public Graphics(Position position, int resources){
+    public Graphics(Position position, Resource path){
+        this.path = path;
         this.po = position;
         this.resources = resources;
     }
 
     public void init(){
-        this.object = new Picture(po.getWidth(),po.getHeight(),resource[resources]);
+        this.object = new Picture(po.getWidth(),po.getHeight(), path.getPath());
         this.object.draw();
     }
 

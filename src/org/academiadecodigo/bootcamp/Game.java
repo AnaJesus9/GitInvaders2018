@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp;
+/**package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
 
@@ -46,7 +46,7 @@ public class Game {
         for(GameObjects enemy : gameObjects){
             for(Bullet bullet : player.getBullets()){
 
-                if( enemy.)
+
             }
 
 
@@ -55,4 +55,4 @@ public class Game {
     }
 
 
-}
+}*/

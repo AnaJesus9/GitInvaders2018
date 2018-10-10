@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.GameTest;
+/**package org.academiadecodigo.bootcamp.GameTest;
 
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
@@ -28,3 +28,4 @@ public class MyTest {
         }
     }
 }
+*/

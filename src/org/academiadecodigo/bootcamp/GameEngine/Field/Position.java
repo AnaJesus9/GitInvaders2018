@@ -1,7 +1,6 @@
 package org.academiadecodigo.bootcamp.GameEngine.Field;
 
 
-import org.academiadecodigo.bootcamp.GameEngine.Direction.Direction;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 
 public class Position implements Grid {

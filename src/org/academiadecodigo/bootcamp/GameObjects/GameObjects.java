@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.GameObjects;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 
 public abstract class GameObjects {
 

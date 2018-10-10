@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.GameObjects;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
+import org.academiadecodigo.bootcamp.GameEngine.Resource;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -18,7 +19,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     private Keyboard keyboard;
 
     public Player(){
-        this.object = new Graphics(5, 0,0); //Requires implemented position class to add proper parameters
+        this.object = new Graphics(5, 0, Resource.PLAYER); //Requires implemented position class to add proper parameters
         this.object.init();
         this.damage = 1;
         this.lives = 3;

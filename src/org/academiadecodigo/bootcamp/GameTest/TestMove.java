@@ -3,16 +3,17 @@ package org.academiadecodigo.bootcamp.GameTest;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
+import org.academiadecodigo.bootcamp.GameEngine.Resource;
 
 public class TestMove {
     public static void main(String[] arg) {
 
         EngineFactory.field();
 
-        EngineFactory.object(6,0.35, 0);
+        EngineFactory.object(6,0.35, Resource.PLAYER);
 
 
-        Graphics[] obj = {new Graphics(2,20,1),new Graphics(4,20,1),new Graphics(6,20,1 ), new Graphics(8,20,1), new Graphics(10,20,1)};
+        Graphics[] obj = {new Graphics(2,20, Resource.ENEMY),new Graphics(4,20, Resource.ENEMY),new Graphics(6,20, Resource.ENEMY ), new Graphics(8,20, Resource.ENEMY), new Graphics(10,20, Resource.ENEMY)};
 
         obj[0].init();
         obj[1].init();

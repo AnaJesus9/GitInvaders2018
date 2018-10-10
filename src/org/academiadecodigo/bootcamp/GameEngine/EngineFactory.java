@@ -10,7 +10,7 @@ public class EngineFactory {
         filed.init();
     }
 
-    public static void object(double row, double col, int resource){
+    public static void object(double row, double col, Resource resource){
         Graphics object = new Graphics(row,col, resource);
         object.init();
     }

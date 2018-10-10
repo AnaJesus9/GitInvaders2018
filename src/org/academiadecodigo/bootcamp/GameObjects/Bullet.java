@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.GameObjects;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
+import org.academiadecodigo.bootcamp.GameEngine.Resource;
 
 public class Bullet extends GameObjects {
 
@@ -14,7 +15,7 @@ public class Bullet extends GameObjects {
     public Bullet(Position position, GameObjects target) {
 
         this.damage = 1;
-        this.object = new Graphics(position.getRow(),0, 1);
+        this.object = new Graphics(position.getRow(),0, Resource.ENEMY);
         this.object.init();
         this.destroyed = false;
         this.target = target;
@@ -48,5 +49,10 @@ public class Bullet extends GameObjects {
     @Override
     public boolean isDestroyed() {
         return destroyed;
+    }
+
+    @Override
+    public Graphics getGraphics() {
+        return this.object;
     }
 }
