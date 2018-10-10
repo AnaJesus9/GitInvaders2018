@@ -17,11 +17,13 @@ public class Graphics extends Direction {
     public Graphics(double row, double col, int resources){
         this.po = new Position(row, col);
         this.resources = resources;
+        init();
     }
 
     public Graphics(Position position, int resources){
         this.po = position;
         this.resources = resources;
+        init();
     }
 
     public void init(){

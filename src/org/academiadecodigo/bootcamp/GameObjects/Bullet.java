@@ -35,8 +35,7 @@ public class Bullet extends GameObjects {
 
     }
 
-    public void hit(int damage) {
-        this.damage = damage;
+    public void hit() {
         this.destroyed = true;
     }
 
@@ -48,5 +47,9 @@ public class Bullet extends GameObjects {
     @Override
     public boolean isDestroyed() {
         return destroyed;
+    }
+
+    public Graphics getGraphics(){
+        return this.object;
     }
 }

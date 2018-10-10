@@ -3,19 +3,14 @@ package org.academiadecodigo.bootcamp.GameObjects;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
-import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
-import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-public class Player extends GameObjects implements Shootable, KeyboardHandler {
+public class Player extends GameObjects implements Shootable {
     private Graphics object;
     private int damage;
     private int lives;
     private boolean destroyed;
     private Bullet[] bullets = new Bullet[20];
 
-    private Keyboard keyboard;
 
     public Player(){
         this.object = new Graphics(5, 0,0); //Requires implemented position class to add proper parameters
@@ -23,8 +18,6 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
         this.damage = 1;
         this.lives = 3;
         this.destroyed = false;
-        this.keyboard = new Keyboard(this);
-        implementKeys();
     }
 
     public void move(Directions direction) {
@@ -52,7 +45,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
         }
     }
 
-    public void hit(int damage){
+    public void hit(){
         this.lives--;
 
         if(this.lives == 0){
@@ -68,39 +61,7 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
         this.destroyed = true;
     }
 
-    private void implementKeys(){
-        KeyboardEvent up = new KeyboardEvent();
-        up.setKey(KeyboardEvent.KEY_UP);
-        up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
 
-        KeyboardEvent down = new KeyboardEvent();
-        down.setKey(KeyboardEvent.KEY_DOWN);
-        down.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        KeyboardEvent space = new KeyboardEvent();
-        space.setKey(KeyboardEvent.KEY_SPACE);
-        space.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-
-        this.keyboard.addEventListener(up);
-        this.keyboard.addEventListener(down);
-        this.keyboard.addEventListener(space);
-    }
-
-    public void keyPressed(KeyboardEvent e){
-        switch (e.getKey()){
-            case KeyboardEvent.KEY_UP: move(Directions.UP);
-                break;
-            case KeyboardEvent.KEY_DOWN: move(Directions.DOWN);
-                break;
-            case KeyboardEvent.KEY_SPACE: shoot();
-                break;
-        }
-
-    }
-
-    public void keyReleased(KeyboardEvent e){
-
-    }
 
 
     public Position getPosition(){
@@ -110,7 +71,6 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
 
     public Bullet[] getBullets(){
         return this.bullets;
-
     }
 
     public Graphics getGraphics(){

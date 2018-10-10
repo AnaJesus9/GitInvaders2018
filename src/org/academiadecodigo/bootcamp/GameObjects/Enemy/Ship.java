@@ -21,15 +21,11 @@ public class Ship extends Enemy {
     }
 
     @Override
-    public void hit(int damage) {
+    public void hit() {
 
-        setHealth(getHealth() - damage);
+        setDestroyed(true);
 
-        if(getHealth() == 0){
-            setDestroyed(true);
-
-            getObject().hide();
-        }
+        getObject().hide();
 
     }
 
@@ -40,7 +36,7 @@ public class Ship extends Enemy {
     }
 
     public Graphics getGraphics(){
-        return this.
+        return super.getGraphics();
     }
 
 }

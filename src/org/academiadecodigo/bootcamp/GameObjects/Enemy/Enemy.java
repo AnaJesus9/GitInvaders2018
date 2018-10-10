@@ -14,7 +14,6 @@ public abstract class Enemy extends GameObjects implements Shootable {
     private boolean destroyed;
     private Directions direction;
     private int timesToMove;
-    private int damage;
 
 
     public Enemy(Graphics object){
@@ -32,6 +31,7 @@ public abstract class Enemy extends GameObjects implements Shootable {
                 this.direction = getRandomDirection();
             }
             direction = this.direction;
+            Thread.sleep(80);
             object.move(direction, 1);
             timesToMove--;
         } catch (Exception e) {
@@ -73,5 +73,9 @@ public abstract class Enemy extends GameObjects implements Shootable {
 
     public Directions getDirection() {
         return direction;
+    }
+
+    public Graphics getGraphics(){
+        return this.object;
     }
 }
