@@ -2,23 +2,23 @@ package org.academiadecodigo.bootcamp.GameObjects;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
-import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
-import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Player extends GameObjects implements Shootable, KeyboardHandler {
-    private CreateObject object;
+    private Graphics object;
     private int damage;
     private int lives;
     private boolean destroyed;
+    private Bullet[] bullets = new Bullet[20];
 
     private Keyboard keyboard;
 
     public Player(){
-        this.object = new CreateObject(5, 0,0); //Requires implemented position class to add proper parameters
+        this.object = new Graphics(5, 0,0); //Requires implemented position class to add proper parameters
         this.object.init();
         this.damage = 1;
         this.lives = 3;
@@ -28,15 +28,28 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     }
 
     public void move(Directions direction) {
-        try {
-            object.move(direction, GameConfigs.VELOCITY_PLAYER);
-        }catch (Exception ey){
-            System.out.println("Error player move");
-        }
+        object.move(direction, 40);
     }
 
-    public Bullet shoot(){
-        return new Bullet( getPosition(), this);
+    public void shoot(){
+        int i = 0;
+        while(bullets[i] != null && i < 5){
+            System.out.println(i);
+            i++;
+        }
+        if(i < 20)
+            bullets[i] = new Bullet( getPosition(), this);
+    }
+
+    public void moveBullet(){
+        for(int i = 0; i < bullets.length; i++){
+            if(bullets[i] != null){
+                bullets[i].move(Directions.RIGHT);
+                if(bullets[i].isDestroyed()){
+                    bullets[i] = null;
+                }
+            }
+        }
     }
 
     public void hit(int damage){
@@ -76,13 +89,11 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
     public void keyPressed(KeyboardEvent e){
         switch (e.getKey()){
             case KeyboardEvent.KEY_UP: move(Directions.UP);
-            break;
+                break;
             case KeyboardEvent.KEY_DOWN: move(Directions.DOWN);
-            break;
-            case KeyboardEvent.KEY_SPACE:
-                System.out.println("teste");
-                shoot();
-            break;
+                break;
+            case KeyboardEvent.KEY_SPACE: shoot();
+                break;
         }
 
     }
@@ -93,7 +104,17 @@ public class Player extends GameObjects implements Shootable, KeyboardHandler {
 
 
     public Position getPosition(){
+        System.out.println(object.getPo().getRow());
         return object.getPo();
+    }
+
+    public Bullet[] getBullets(){
+        return this.bullets;
+
+    }
+
+    public Graphics getGraphics(){
+        return this.object;
     }
 
 }

@@ -1,16 +1,14 @@
 package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
-import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
-import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameEngine.Random;
-import org.academiadecodigo.bootcamp.GameObjects.Bullet;
 
 public class Ship extends Enemy {
 
 
     public Ship(){
-        super(new CreateObject((double)Random.getRandomNumberWithZero(GameConfigs.ROW),
+        super(new Graphics((double)Random.getRandomNumberWithZero(GameConfigs.ROW),
                 GameConfigs.COL -1,
                 1));
 
@@ -37,9 +35,12 @@ public class Ship extends Enemy {
 
 
     @Override
-    public Bullet shoot() {
+    public void shoot() {
         //return new Bullet();
-        return null;
+    }
+
+    public Graphics getGraphics(){
+        return this.
     }
 
 }

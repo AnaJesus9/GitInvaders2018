@@ -1,5 +1,6 @@
-/**package org.academiadecodigo.bootcamp;
+package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameObjects.*;
+import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
 
 import java.util.LinkedList;
 
@@ -31,7 +32,7 @@ public class Game {
     }
 
     public void start(){
-        while( !player.isDestroyed() || !checkEnemies()){
+        while(true){
             //Enemy movements
 
             //Enemy fire (Needs to consider if all enemies will fire or enemies fire randomly)
@@ -40,7 +41,18 @@ public class Game {
         }
     }
 
+    public void checkCollisions(){
+
+        for(GameObjects enemy : gameObjects){
+            for(Bullet bullet : player.getBullets()){
+
+                if( enemy.)
+            }
+
+
+        }
+
+    }
 
 
 }
-*/

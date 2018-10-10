@@ -1,10 +1,6 @@
 package org.academiadecodigo.bootcamp.GameTest;
 
-import org.academiadecodigo.bootcamp.GameEngine.Direction.Direction;
-import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
-import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
-import org.academiadecodigo.bootcamp.GameEngine.Random;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
 
 public class MyTest {

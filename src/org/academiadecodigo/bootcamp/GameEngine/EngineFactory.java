@@ -1,7 +1,7 @@
 package org.academiadecodigo.bootcamp.GameEngine;
 
 import org.academiadecodigo.bootcamp.GameEngine.Field.Canvas;
-import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 
 public class EngineFactory {
 
@@ -11,7 +11,7 @@ public class EngineFactory {
     }
 
     public static void object(double row, double col, int resource){
-        CreateObject object = new CreateObject(row,col, resource);
+        Graphics object = new Graphics(row,col, resource);
         object.init();
     }
 

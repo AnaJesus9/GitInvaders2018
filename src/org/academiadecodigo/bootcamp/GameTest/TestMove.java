@@ -1,6 +1,6 @@
 package org.academiadecodigo.bootcamp.GameTest;
 
-import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 
@@ -12,7 +12,7 @@ public class TestMove {
         EngineFactory.object(6,0.35, 0);
 
 
-        CreateObject[] obj = {new CreateObject(2,20,1),new CreateObject(4,20,1),new CreateObject(6,20,1 ), new CreateObject(8,20,1), new CreateObject(10,20,1)};
+        Graphics[] obj = {new Graphics(2,20,1),new Graphics(4,20,1),new Graphics(6,20,1 ), new Graphics(8,20,1), new Graphics(10,20,1)};
 
         obj[0].init();
         obj[1].init();

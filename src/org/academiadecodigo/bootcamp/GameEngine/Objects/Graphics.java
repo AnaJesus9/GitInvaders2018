@@ -4,22 +4,22 @@ import org.academiadecodigo.bootcamp.GameEngine.Direction.Direction;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
+import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
-public class CreateObject extends Direction {
+public class Graphics extends Direction {
 
     private Position po;
     private Picture object;
-    private String[] resource = {"resources/player.png", "resources/enemies.png"};
+    private String[] resource = {"resources/player.png", "resources/enemy.png"};
     private int resources;
 
-    public CreateObject(double row, double col, int resources){
+    public Graphics(double row, double col, int resources){
         this.po = new Position(row, col);
         this.resources = resources;
-        init();
     }
 
-    public CreateObject(Position position, int resources){
+    public Graphics(Position position, int resources){
         this.po = position;
         this.resources = resources;
     }
@@ -37,32 +37,32 @@ public class CreateObject extends Direction {
         object.draw();
     }
 
-    public void move(Directions direction, int speed) throws Exception {
+    public void move(Directions direction, int veloci){
         switch (direction){
             case UP:
                 if(!(po.getRow() < 1)){
-                    moveDirection(0, -speed);
-                    movePos(speed, direction);
+                    moveDirection(0, -veloci);
+                    getPos(veloci, direction);
                 }
                 break;
             case DOWN:
                 if(!(po.getRow() > 10)){
-                    moveDirection(0, speed);
-                    movePos(speed, direction);
+                    moveDirection(0, veloci);
+                    getPos(veloci, direction);
                     break;
                 }
                 break;
             case LEFT:
-                if(!(po.getCol() < 1)){
-                    moveDirection(-speed, 0);
-                    movePos(speed, direction);
+                if(!(po.getCol() < GameConfigs.PADDING_PLAYER)){
+                    moveDirection(-veloci, 0);
+                    getPos(veloci, direction);
                     break;
                 }
                 break;
             case RIGHT:
                 if(!(po.getCol() > GameConfigs.COL-4)){
-                    moveDirection(speed, 0);
-                    movePos(speed, direction);
+                    moveDirection(veloci, 0);
+                    getPos(veloci, direction);
                     break;
                 }
                 break;
@@ -79,8 +79,8 @@ public class CreateObject extends Direction {
         return po;
     }
 
-    private void movePos(int speed, Directions direction){
-        po.movePosition(speed, direction);
+    private void getPos(int veloci, Directions direction){
+        po.movePosition(veloci, direction);
     }
 
 }

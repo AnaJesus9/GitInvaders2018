@@ -1,16 +1,15 @@
 package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
-import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
-import org.academiadecodigo.bootcamp.GameEngine.Objects.CreateObject;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameEngine.Random;
 import org.academiadecodigo.bootcamp.GameObjects.GameObjects;
 import org.academiadecodigo.bootcamp.GameObjects.Shootable;
 
 public abstract class Enemy extends GameObjects implements Shootable {
 
-    private CreateObject object;
+    private Graphics object;
     private int health;
     private boolean destroyed;
     private Directions direction;
@@ -18,7 +17,7 @@ public abstract class Enemy extends GameObjects implements Shootable {
     private int damage;
 
 
-    public Enemy(CreateObject object){
+    public Enemy(Graphics object){
         this.health = 100;
         this.destroyed = false;
         this.object = object;
@@ -68,7 +67,7 @@ public abstract class Enemy extends GameObjects implements Shootable {
         this.destroyed = destroyed;
     }
 
-    public CreateObject getObject() {
+    public Graphics getObject() {
         return object;
     }
 
