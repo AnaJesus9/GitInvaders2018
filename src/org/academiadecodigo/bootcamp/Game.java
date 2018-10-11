@@ -35,8 +35,8 @@ public class Game implements KeyboardHandler {
 
     public void start() throws Exception{
 
-        Music m = new Music("music");
-        m.startMusic();
+        Music m = new Music("Background");
+        //m.startMusic(false);
 
         while(true){
 
@@ -156,7 +156,10 @@ public class Game implements KeyboardHandler {
                 break;
             case KeyboardEvent.KEY_DOWN: player.move(Directions.DOWN);
                 break;
-            case KeyboardEvent.KEY_SPACE: player.shoot();
+            case KeyboardEvent.KEY_SPACE:
+                Music m = new Music("bullet");
+                m.startMusic(true);
+                player.shoot();
                 break;
         }
 

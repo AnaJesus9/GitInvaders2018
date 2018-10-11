@@ -11,6 +11,7 @@ import java.net.URL;
 public class Music {
 
     private String url;
+    private boolean play;
 
     public Music(String url){
 
@@ -18,50 +19,50 @@ public class Music {
 
     }
 
-    public void startMusic() {
+    public void startMusic(boolean play) {
+        this.play = play;
+        if(this.play) {
+            String pathStr = url;
+            URL soundURL;
+            AudioInputStream audioInputStream = null;
 
-        String pathStr = url;
-        URL soundURL;
-        AudioInputStream audioInputStream = null;
+            try {
 
-        try {
+                soundURL = GitInvaders.class.getResource(pathStr);
 
-            soundURL = GitInvaders.class.getResource(pathStr);
+                if (soundURL == null) {
 
-            if (soundURL == null) {
+                    pathStr = pathStr.substring(1);
+                    File file = new File(pathStr);
+                    soundURL = file.toURI().toURL();
 
-                pathStr = pathStr.substring(1);
-                File file = new File(pathStr);
-                soundURL = file.toURI().toURL();
+                }
+
+                audioInputStream = AudioSystem.getAudioInputStream(soundURL);
+
+            } catch (UnsupportedAudioFileException e) {
+
+                e.printStackTrace();
+
+            } catch (IOException e) {
+
+                e.printStackTrace();
 
             }
+            try {
 
-            audioInputStream = AudioSystem.getAudioInputStream(soundURL);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audioInputStream);
+                clip.start();
 
-        } catch (UnsupportedAudioFileException e) {
+            } catch (LineUnavailableException e) {
+                e.printStackTrace();
 
-            e.printStackTrace();
+            } catch (IOException e) {
 
-        } catch (IOException e) {
+                e.printStackTrace();
 
-            e.printStackTrace();
-
-        }
-        try {
-
-            Clip clip = AudioSystem.getClip();
-            clip.open(audioInputStream);
-            clip.start();
-            clip.loop(clip.LOOP_CONTINUOUSLY);
-
-
-        } catch (LineUnavailableException e) {
-            e.printStackTrace();
-
-        } catch (IOException e) {
-
-            e.printStackTrace();
-
+            }
         }
     }
 }

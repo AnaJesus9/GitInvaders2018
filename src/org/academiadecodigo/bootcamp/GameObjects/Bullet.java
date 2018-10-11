@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Enemy;
+import org.academiadecodigo.bootcamp.music.Music;
 
 public class Bullet extends GameObjects {
 
