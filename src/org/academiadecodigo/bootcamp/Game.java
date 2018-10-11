@@ -1,6 +1,5 @@
 package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
-import org.academiadecodigo.bootcamp.GameEngine.Menu.Life;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -10,7 +9,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements KeyboardHandler {
     private Player player;
-    private final int NUMBER_OF_ENEMIES = 2;
+    private final int NUMBER_OF_ENEMIES = 20;
     private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
 
     private Keyboard keyboard;
@@ -21,15 +20,6 @@ public class Game implements KeyboardHandler {
         implementKeys();
         createEnemies();
 
-    }
-
-    public void lives(){
-        double o = 0.2;
-        for(int i = 0; i < 4; i++){
-            Life life = new Life(o);
-            life.init();
-            o+=0.7;
-        }
     }
 
     //Create enemy instances and add to the array
@@ -48,7 +38,6 @@ public class Game implements KeyboardHandler {
     }
 
     public void start() throws Exception{
-        lives();
         while(true){
 
             Thread.sleep(10);
@@ -64,6 +53,9 @@ public class Game implements KeyboardHandler {
             }
 
             checkCollisions();
+            if(player.isDestroyed()){
+                System.exit(0);
+            }
         }
     }
 
@@ -75,7 +67,7 @@ public class Game implements KeyboardHandler {
             }
             if(enemy.getGraphics().getPo().getCol() == 0){
                 enemy.hit();
-                //REMOVE A LIFE HERE!!!
+                player.hit();
             }
 
             for(Bullet bullet : player.getBullets()){
@@ -107,9 +99,7 @@ public class Game implements KeyboardHandler {
                     }
                     if( comparePlayer(player,bullet) ){
                         System.out.println("Collision");
-
-                        //REMOVE LIFE HEREEEEE!!!!!
-
+                        player.hit();
                         bullet.hit();
                         System.out.println(bullet.isDestroyed());
                     }
@@ -127,10 +117,6 @@ public class Game implements KeyboardHandler {
     public boolean comparePlayer(Player player, Bullet bullet){
         return (player.getGraphics().getPo().getCol() == bullet.getGraphics().getPo().getCol() &&
                 player.getGraphics().getPo().getRow() == bullet.getGraphics().getPo().getRow());
-    }
-
-    public void randomChance(){
-     //   int random =
     }
 
     private void implementKeys(){

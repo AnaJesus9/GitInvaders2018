@@ -2,12 +2,14 @@ package org.academiadecodigo.bootcamp.GameObjects;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Life;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 
 public class Player extends GameObjects implements Shootable {
     private Graphics object;
     private int damage;
-    private int lives;
+    private Life[] lives;
+    private int numbOfLives;
     private boolean destroyed;
     private Bullet[] bullets = new Bullet[100];
 
@@ -15,12 +17,22 @@ public class Player extends GameObjects implements Shootable {
     public Player(){
         this.object = new Graphics(5, 0,0); //Requires implemented position class to add proper parameters
         this.damage = 1;
-        this.lives = 3;
+        this.numbOfLives = 4;
+        this.lives = new Life[numbOfLives];
         this.destroyed = false;
+        drawLives();
     }
 
     public void move(Directions direction) {
         object.move(direction, 40);
+    }
+
+    private void drawLives(){
+        double col = 0.2;
+        for(int i = 0; i < numbOfLives; i++){
+            lives[i] = new Life(col);
+            col += 0.7;
+        }
     }
 
     public void shoot(){
@@ -49,10 +61,19 @@ public class Player extends GameObjects implements Shootable {
     }
 
     public void hit(){
-        this.lives--;
-
-        if(this.lives == 0){
-            destroy();
+        numbOfLives--;
+        lives[numbOfLives].hide();
+        for(int i = 0; i < 50; i++){
+            object.hide();
+            try {
+                Thread.sleep(1);
+            }catch (Exception e){
+                System.out.println("error delay");
+            }
+            object.show();
+        }
+        if(numbOfLives == 0){
+            destroyed = true;
         }
     }
 

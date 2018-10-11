@@ -37,17 +37,10 @@ public class Position implements Grid {
         return row * CELLSIZE;
     }
 
-    public int getCELLSIZE() {
-        return CELLSIZE;
-    }
-
     public void setCol(double col) {
         this.col = col;
     }
 
-    public void setRow(double row) {
-        this.row = row;
-    }
 
     public void movePosition(int speed, Directions direction){
 

@@ -53,7 +53,8 @@ public abstract class Enemy extends GameObjects implements Shootable {
             }
             if(bullets[i] == null){
                 System.out.println(getGraphics().getPo().getCol());
-                bullets[i] = new Bullet( new Position(getGraphics().getPo().getRow(), getGraphics().getPo().getCol()), this, 2);
+                bullets[i] = new Bullet( new Position(getGraphics().getPo().getRow(), getGraphics().getPo().getCol())
+                        , this, 3);
                 break;
             }
         }
@@ -71,10 +72,10 @@ public abstract class Enemy extends GameObjects implements Shootable {
     }
 
     private void getRandomShot(){
-        int random = Random.getRandomNumberWithZero(50);
+        int random = Random.getRandomNumberWithZero(20);
 
         if(timesToMove == 40 || timesToMove == 0){
-            if( random == 1){
+            if( random == 3){
                 shoot();
             }
         }

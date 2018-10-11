@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.GameEngine.Menu;
+package org.academiadecodigo.bootcamp.GameEngine.Objects;
 
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.simplegraphics.pictures.Picture;

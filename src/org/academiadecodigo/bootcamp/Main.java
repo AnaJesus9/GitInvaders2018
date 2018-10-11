@@ -14,3 +14,6 @@ public class Main {
     }
 
 }
+
+
+//LOGICA DE INSTANCIA UM ENEMY RANDOM

@@ -11,7 +11,8 @@ public class Graphics extends Direction {
 
     private Position po;
     private Picture object;
-    private String[] resource = {"resources/player.png", "resources/enemies.png", "resources/bullets.png"};
+    private String[] resource = {"resources/player.png", "resources/enemies.png", "resources/bullets.png",
+                                 "resources/bullet_enemy.png"};
     private int resources;
 
     public Graphics(double row, double col, int resources){
@@ -42,7 +43,7 @@ public class Graphics extends Direction {
     public void move(Directions direction, int speed){
         switch (direction){
             case UP:
-                if(!(po.getRow() < 1)){
+                if(!(po.getRow() < 2)){
                     moveDirection(0, -speed);
                     getPos(speed, direction);
                 }
