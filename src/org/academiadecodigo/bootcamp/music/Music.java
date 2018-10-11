@@ -1,3 +1,4 @@
+package org.academiadecodigo.bootcamp.music;
 
 import javax.sound.sampled.*;
 import java.io.File;
@@ -11,7 +12,7 @@ public class Music {
 
     public void startMusic() {
 
-        String pathStr = "/resources/music/music.wav";
+        String pathStr = "/resources/music.wav";
         URL soundURL;
         AudioInputStream audioInputStream = null;
 
@@ -44,6 +45,7 @@ public class Music {
             clip.open(audioInputStream);
             clip.start();
             clip.loop(clip.LOOP_CONTINUOUSLY);
+
 
         } catch (LineUnavailableException e) {
             e.printStackTrace();
