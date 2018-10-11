@@ -8,6 +8,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements KeyboardHandler {
+
     private Player player;
     private final int NUMBER_OF_ENEMIES = 20;
     private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
@@ -19,7 +20,6 @@ public class Game implements KeyboardHandler {
         this.keyboard = new Keyboard(this);
         implementKeys();
         createEnemies();
-
     }
 
     private void createEnemies(){
@@ -27,16 +27,9 @@ public class Game implements KeyboardHandler {
             this.enemies[i] = new Ship();
         }
     }
-    private boolean checkEnemies(){
-        for( int i = 0; i < NUMBER_OF_ENEMIES; i++){
-            if( !enemies[i].isDestroyed()){
-                return false;
-            }
-        }
-        return true;
-    }
 
     public void start() throws Exception{
+
         while(true){
 
             Thread.sleep(10);
@@ -61,6 +54,7 @@ public class Game implements KeyboardHandler {
     public void checkCollisions(){
 
         for(Ship enemy : enemies){
+
             if( enemy.isDestroyed()){
                 continue;
             }
@@ -76,10 +70,8 @@ public class Game implements KeyboardHandler {
                     }
 
                     if( compareEnemy(enemy,bullet) ){
-                        System.out.println("Collision");
                         enemy.hit();
                         bullet.hit();
-
                     }
                 }
             }
@@ -90,20 +82,19 @@ public class Game implements KeyboardHandler {
                 continue;
             }
 
-            for(Bullet bullet : enemy.getBullets()){
+            for(Bullet bullet : enemy.getBullets()) {
                 if( bullet != null){
                     if(bullet.isDestroyed()){
                         continue;
                     }
-                    if( comparePlayer(player,bullet) ){
 
+                    if( comparePlayer(player,bullet)) {
                         player.hit();
                         bullet.hit();
                     }
                 }
             }
         }
-
     }
 
     public boolean compareEnemy(Ship enemy, Bullet bullet){
