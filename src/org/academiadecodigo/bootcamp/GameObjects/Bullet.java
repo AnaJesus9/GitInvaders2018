@@ -8,19 +8,19 @@ import org.academiadecodigo.bootcamp.GameObjects.Enemy.Enemy;
 
 public class Bullet extends GameObjects {
 
-    private int damage;
     private Graphics object;
     private boolean destroyed;
     private GameObjects shooter;
 
     public Bullet(Position position, GameObjects shooter, int resource) {
-        this.damage = 1;
+
         this.object = new Graphics(position.getRow(),position.getCol(), resource);
         this.destroyed = false;
         this.shooter = shooter;
     }
 
     public void move(Directions direction) {
+
         if(isDestroyed()) {
             return;
         }
@@ -33,8 +33,6 @@ public class Bullet extends GameObjects {
             object.move(direction, 10);
             return;
         }
-        System.out.println("destroyed");
-
     }
 
     public void hit() {
@@ -43,17 +41,14 @@ public class Bullet extends GameObjects {
     }
 
     public void destroyed() {
-
         object.hide();
         this.destroyed = true;
     }
-
 
     @Override
     public boolean isDestroyed() {
         return destroyed;
     }
-
     public Graphics getGraphics(){
         return this.object;
     }

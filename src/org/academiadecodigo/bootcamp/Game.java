@@ -11,10 +11,10 @@ public class Game implements KeyboardHandler {
     private Player player;
     private final int NUMBER_OF_ENEMIES = 20;
     private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
-
     private Keyboard keyboard;
 
     public Game(){
+
         player = new Player();
         this.keyboard = new Keyboard(this);
         implementKeys();
@@ -22,7 +22,6 @@ public class Game implements KeyboardHandler {
 
     }
 
-    //Create enemy instances and add to the array
     private void createEnemies(){
         for( int i = 0; i < NUMBER_OF_ENEMIES; i++){
             this.enemies[i] = new Ship();
@@ -30,11 +29,11 @@ public class Game implements KeyboardHandler {
     }
     private boolean checkEnemies(){
         for( int i = 0; i < NUMBER_OF_ENEMIES; i++){
-            if( !enemies[i].isDestroyed()){ //return false if there is at least one enemy still alive
+            if( !enemies[i].isDestroyed()){
                 return false;
             }
         }
-        return true; //return true is all enemies are destroyed
+        return true;
     }
 
     public void start() throws Exception{
@@ -80,12 +79,11 @@ public class Game implements KeyboardHandler {
                         System.out.println("Collision");
                         enemy.hit();
                         bullet.hit();
-                        System.out.println(bullet.isDestroyed());
+
                     }
                 }
             }
         }
-
 
         for(Ship enemy : enemies){
             if( enemy.isDestroyed()){
@@ -98,10 +96,9 @@ public class Game implements KeyboardHandler {
                         continue;
                     }
                     if( comparePlayer(player,bullet) ){
-                        System.out.println("Collision");
+
                         player.hit();
                         bullet.hit();
-                        System.out.println(bullet.isDestroyed());
                     }
                 }
             }
@@ -120,6 +117,7 @@ public class Game implements KeyboardHandler {
     }
 
     private void implementKeys(){
+
         KeyboardEvent up = new KeyboardEvent();
         up.setKey(KeyboardEvent.KEY_UP);
         up.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -152,5 +150,4 @@ public class Game implements KeyboardHandler {
     public void keyReleased(KeyboardEvent e){
 
     }
-
 }

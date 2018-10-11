@@ -52,9 +52,8 @@ public abstract class Enemy extends GameObjects implements Shootable {
                 bullets[i] = null;
             }
             if(bullets[i] == null){
-                System.out.println(getGraphics().getPo().getCol());
-                bullets[i] = new Bullet( new Position(getGraphics().getPo().getRow(), getGraphics().getPo().getCol())
-                        , this, 3);
+                bullets[i] = new Bullet( new Position(getGraphics().getPo().getRow(), getGraphics().getPo().getCol()),
+                        this, 3);
                 break;
             }
         }
@@ -83,10 +82,12 @@ public abstract class Enemy extends GameObjects implements Shootable {
 
     private Directions getRandomDirection() {
         int random = Random.getRandomNumber(2);
+
         if(random != 2) {
             timesToMove = GameConfigs.CELLSIZE * 2;
             return Directions.LEFT;
         }
+
         timesToMove = GameConfigs.CELLSIZE;
         return Directions.values()[Random.getRandomNumberWithZero(3)];
     }
@@ -115,11 +116,9 @@ public abstract class Enemy extends GameObjects implements Shootable {
     public Graphics getObject() {
         return object;
     }
-
     public Directions getDirection() {
         return direction;
     }
-
     public Bullet[] getBullets(){
         return this.bullets;
     }

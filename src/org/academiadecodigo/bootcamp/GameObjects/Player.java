@@ -6,8 +6,8 @@ import org.academiadecodigo.bootcamp.GameEngine.Objects.Life;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 
 public class Player extends GameObjects implements Shootable {
+
     private Graphics object;
-    private int damage;
     private Life[] lives;
     private int numbOfLives;
     private boolean destroyed;
@@ -15,8 +15,7 @@ public class Player extends GameObjects implements Shootable {
 
 
     public Player(){
-        this.object = new Graphics(5, 0,0); //Requires implemented position class to add proper parameters
-        this.damage = 1;
+        this.object = new Graphics(5, 0,0);
         this.numbOfLives = 4;
         this.lives = new Life[numbOfLives];
         this.destroyed = false;
@@ -41,7 +40,6 @@ public class Player extends GameObjects implements Shootable {
                 bullets[i] = null;
             }
 
-            System.out.println(i);
             if(bullets[i] == null){
                 bullets[i] = new Bullet( new Position(getPosition().getRow(), 0), this, 2);
                 break;
@@ -80,12 +78,6 @@ public class Player extends GameObjects implements Shootable {
     public boolean isDestroyed(){
         return this.destroyed;
     }
-
-    private void destroy(){
-        this.destroyed = true;
-    }
-
-
     public Position getPosition(){
         System.out.println(object.getPo().getRow());
         return object.getPo();
@@ -94,7 +86,6 @@ public class Player extends GameObjects implements Shootable {
     public Bullet[] getBullets(){
         return this.bullets;
     }
-
     public Graphics getGraphics(){
         return this.object;
     }

@@ -14,7 +14,6 @@ public class Canvas extends GameConfigs implements Grid {
 
     public void init(){
         this.field = new Rectangle(0,0,getWidth(),getHeight());
-        System.out.println("WIDTH " + getWidth() + " HEIGHT " + getHeight());
         this.field.setColor(Color.BLACK);
         this.field.fill();
     }

@@ -80,8 +80,8 @@ public class Graphics extends Direction {
         return po;
     }
 
-    private void getPos(int veloci, Directions direction){
-        po.movePosition(veloci, direction);
+    private void getPos(int speed, Directions direction){
+        po.movePosition(speed, direction);
     }
 
 }
