@@ -35,7 +35,7 @@ public class Game implements KeyboardHandler {
 
     public void start() throws Exception{
 
-        Music m = new Music();
+        Music m = new Music("music");
         m.startMusic();
 
         while(true){
