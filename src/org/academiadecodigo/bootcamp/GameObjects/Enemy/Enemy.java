@@ -41,7 +41,7 @@ public abstract class Enemy extends GameObjects implements Shootable {
             this.direction = getRandomDirection();
         }
         direction = this.direction;
-        object.move(direction, 1);
+        object.move(direction, 2);
         timesToMove--;
 
     }

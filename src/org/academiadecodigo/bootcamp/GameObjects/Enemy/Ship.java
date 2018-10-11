@@ -8,7 +8,7 @@ import org.academiadecodigo.bootcamp.GameEngine.Random;
 public class Ship extends Enemy {
 
     public Ship(){
-        super(new Graphics((double)Random.getRandomNumberWithZero(GameConfigs.ROW),
+        super(new Graphics((double)Random.getRandomNumberWithZero(GameConfigs.ROW-2)+1,
                 GameConfigs.COL -1,
                 1));
     }
