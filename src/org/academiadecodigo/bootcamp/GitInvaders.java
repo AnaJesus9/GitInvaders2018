@@ -16,5 +16,3 @@ public class GitInvaders {
     }
 }
 
-
-//LOGICA DE INSTANCIA UM ENEMY RANDOM

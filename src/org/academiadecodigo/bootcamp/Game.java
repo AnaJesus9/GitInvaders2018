@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
+import org.academiadecodigo.bootcamp.music.Music;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -30,7 +31,11 @@ public class Game implements KeyboardHandler {
 
     public void start() throws Exception{
 
+        Music m = new Music();
+        m.startMusic();
+
         while(true){
+
 
             Thread.sleep(10);
             player.moveBullet();

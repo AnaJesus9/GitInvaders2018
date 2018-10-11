@@ -1,12 +1,12 @@
 package org.academiadecodigo.bootcamp.music;
 
+import org.academiadecodigo.bootcamp.GitInvaders;
+
 import javax.sound.sampled.*;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-
-// Change this class to your liking, this is just a base example
 
 public class Music {
 
@@ -18,7 +18,7 @@ public class Music {
 
         try {
 
-            soundURL = Main.class.getResource(pathStr);
+            soundURL = GitInvaders.class.getResource(pathStr);
 
             if (soundURL == null) {
 
