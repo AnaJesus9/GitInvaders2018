@@ -15,7 +15,7 @@ public class Game implements KeyboardHandler {
     private final int NUMBER_OF_ENEMIES = 20;
     private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
     private Keyboard keyboard;
-    private int scores = 0;
+    private int scores = 1;
     private Score score = new Score(scores);
 
     public Game(){
@@ -36,7 +36,7 @@ public class Game implements KeyboardHandler {
         while(true){
             Thread.sleep(10);
             player.moveBullet();
-            score.show();
+
 
             for(  Ship enemy : enemies){
 

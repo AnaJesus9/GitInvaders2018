@@ -8,7 +8,7 @@ public class Score {
     private Text object;
 
     public Score(int score){
-        this.object = new Text(440,500,"SCORE: " + score);
+        this.object = new Text(440,500,"WAVE " + score);
         this.object.setColor(Color.WHITE);
         this.object.draw();
     }
