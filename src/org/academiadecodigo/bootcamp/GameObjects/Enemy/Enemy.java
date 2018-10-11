@@ -16,12 +16,9 @@ public abstract class Enemy extends GameObjects implements Shootable {
     private boolean destroyed;
     private Directions direction;
     private int timesToMove;
-    private Bullet[] bullets = new Bullet[100];
-
-
+    private Bullet[] bullets = new Bullet[10];
 
     public Enemy(Graphics object){
-
         this.destroyed = false;
         this.object = object;
         this.timesToMove = GameConfigs.CELLSIZE * 2;
@@ -41,7 +38,7 @@ public abstract class Enemy extends GameObjects implements Shootable {
             this.direction = getRandomDirection();
         }
         direction = this.direction;
-        object.move(direction, 2);
+        object.move(direction, 10);
         timesToMove--;
 
     }
@@ -114,6 +111,8 @@ public abstract class Enemy extends GameObjects implements Shootable {
             bullet.destroyed();
         }
     }
+
+
 
     public Graphics getObject() {
         return object;

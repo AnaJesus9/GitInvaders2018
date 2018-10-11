@@ -32,6 +32,7 @@ public class Game implements KeyboardHandler {
         }
     }
 
+
     public void start() throws Exception{
         while(true){
             Thread.sleep(10);

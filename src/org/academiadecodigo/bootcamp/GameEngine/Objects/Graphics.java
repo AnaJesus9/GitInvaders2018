@@ -84,4 +84,8 @@ public class Graphics extends Direction {
         po.movePosition(speed, direction);
     }
 
+    public void setPo(Position pos){
+        this.po =pos;
+    }
+
 }
