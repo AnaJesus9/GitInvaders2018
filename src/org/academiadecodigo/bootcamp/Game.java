@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
+import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Score;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -13,6 +15,8 @@ public class Game implements KeyboardHandler {
     private final int NUMBER_OF_ENEMIES = 20;
     private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
     private Keyboard keyboard;
+    private int scores = 0;
+    private Score score = new Score(scores);
 
     public Game(){
 
@@ -29,11 +33,10 @@ public class Game implements KeyboardHandler {
     }
 
     public void start() throws Exception{
-
         while(true){
-
             Thread.sleep(10);
             player.moveBullet();
+            score.show();
 
             for(  Ship enemy : enemies){
 
@@ -62,6 +65,9 @@ public class Game implements KeyboardHandler {
                 return false;
             }
         }
+        scores++;
+        score.hide();
+        score = new Score(scores);
         return true;
     }
 
