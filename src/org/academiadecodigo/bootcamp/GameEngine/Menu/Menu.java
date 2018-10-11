@@ -20,12 +20,14 @@ public class Menu implements Grid, KeyboardHandler {
     private int col;
     private int CELLSIZE = GameConfigs.CELLSIZE;
     private Keyboard keyboard;
-
+    private boolean isInCredits = false;
+    private Animation animation;
     public Menu(int row, int col) {
         //this.game = game;
         this.row = row;
         this.col = col;
-        keyboard = new Keyboard(this);
+        this.keyboard = new Keyboard(this);
+        this.animation = new Animation();
 
     }
 
@@ -40,13 +42,20 @@ public class Menu implements Grid, KeyboardHandler {
                 break;
 
             case KeyboardEvent.KEY_2:
-                  System.exit(0);
-                  break;
+                System.exit(0);
+                break;
 
             case KeyboardEvent.KEY_3:
-               menu.delete();
-               credits();
-               break;
+                if (isInCredits) {
+                    menu.delete();
+                    mainMenu();
+                    isInCredits = false;
+                } else {
+                    credits();
+                    isInCredits = true;
+                }
+
+                break;
         }
     }
 
@@ -78,21 +87,23 @@ public class Menu implements Grid, KeyboardHandler {
 
     private void mainMenu() {
 
+
+       //pictures[0] = new Picture(getWidth() / 2, getWidth() / 2, "")
         menu = new Picture(col, row, "resources/git_invaders_logo.png");
         menu.draw();
     }
 
     private void credits() {
-
-        menu = new Picture(0, 0, "resources/git_invaders_credits.png");
+        menu.delete();
+        menu = new Picture(col, row, "resources/git_invaders_credits.png");
         menu.draw();
+
     }
 
     private void gameOver() {
-        menu = new Picture(0,0,"resources/git_invaders_gameover.png");
+        menu = new Picture(col, row, "resources/git_invaders_gameOver.png");
         menu.draw();
     }
-
 
 
     public void delete() {
