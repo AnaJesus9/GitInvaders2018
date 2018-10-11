@@ -2,7 +2,7 @@ package org.academiadecodigo.bootcamp;
 
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 
-public class Main {
+public class GitInvaders {
 
     public static void main(String[] args){
 

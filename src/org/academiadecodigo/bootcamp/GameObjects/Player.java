@@ -2,6 +2,7 @@ package org.academiadecodigo.bootcamp.GameObjects;
 
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Explosion;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Life;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 
@@ -11,7 +12,7 @@ public class Player extends GameObjects implements Shootable {
     private Life[] lives;
     private int numbOfLives;
     private boolean destroyed;
-    private Bullet[] bullets = new Bullet[100];
+    private Bullet[] bullets = new Bullet[20];
 
 
     public Player(){
@@ -59,6 +60,9 @@ public class Player extends GameObjects implements Shootable {
     }
 
     public void hit(){
+        if(numbOfLives == 0){
+            return;
+        }
         numbOfLives--;
         lives[numbOfLives].hide();
         for(int i = 0; i < 50; i++){
@@ -71,6 +75,8 @@ public class Player extends GameObjects implements Shootable {
             object.show();
         }
         if(numbOfLives == 0){
+            object.hide();
+            Explosion explosion = new Explosion(getGraphics().getPo().getRow(),getGraphics().getPo().getCol(),30);
             destroyed = true;
         }
     }
