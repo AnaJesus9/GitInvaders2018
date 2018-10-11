@@ -45,12 +45,8 @@ public class Menu implements Grid, KeyboardHandler {
             case KeyboardEvent.KEY_3:
                menu.delete();
                credits();
-
-                break;
-
+               break;
         }
-
-
     }
 
     @Override
