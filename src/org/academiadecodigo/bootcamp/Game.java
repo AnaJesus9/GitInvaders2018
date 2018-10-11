@@ -10,7 +10,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements KeyboardHandler {
     private Player player;
-    private final int NUMBER_OF_ENEMIES = 3;
+    private final int NUMBER_OF_ENEMIES = 2;
     private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
 
     private Keyboard keyboard;
@@ -30,8 +30,8 @@ public class Game implements KeyboardHandler {
             life.init();
             o+=0.7;
         }
-
     }
+
     //Create enemy instances and add to the array
     private void createEnemies(){
         for( int i = 0; i < NUMBER_OF_ENEMIES; i++){
@@ -59,8 +59,8 @@ public class Game implements KeyboardHandler {
                 if(enemy.isDestroyed()){
                     continue;
                 }
-                //System.out.println(enemy.isDestroyed());
                 enemy.move();
+                enemy.moveBullet();
             }
 
             checkCollisions();
@@ -75,14 +75,16 @@ public class Game implements KeyboardHandler {
             }
             if(enemy.getGraphics().getPo().getCol() == 0){
                 enemy.hit();
+                //REMOVE A LIFE HERE!!!
             }
+
             for(Bullet bullet : player.getBullets()){
                 if( bullet != null){
                     if(bullet.isDestroyed()){
                         continue;
                     }
 
-                    if( compare(enemy,bullet) ){
+                    if( compareEnemy(enemy,bullet) ){
                         System.out.println("Collision");
                         enemy.hit();
                         bullet.hit();
@@ -92,11 +94,43 @@ public class Game implements KeyboardHandler {
             }
         }
 
+
+        for(Ship enemy : enemies){
+            if( enemy.isDestroyed()){
+                continue;
+            }
+
+            for(Bullet bullet : enemy.getBullets()){
+                if( bullet != null){
+                    if(bullet.isDestroyed()){
+                        continue;
+                    }
+                    if( comparePlayer(player,bullet) ){
+                        System.out.println("Collision");
+
+                        //REMOVE LIFE HEREEEEE!!!!!
+
+                        bullet.hit();
+                        System.out.println(bullet.isDestroyed());
+                    }
+                }
+            }
+        }
+
     }
 
-    public boolean compare(Ship enemy, Bullet bullet){
+    public boolean compareEnemy(Ship enemy, Bullet bullet){
         return (enemy.getGraphics().getPo().getCol() == bullet.getGraphics().getPo().getCol() &&
                 enemy.getGraphics().getPo().getRow() == bullet.getGraphics().getPo().getRow());
+    }
+
+    public boolean comparePlayer(Player player, Bullet bullet){
+        return (player.getGraphics().getPo().getCol() == bullet.getGraphics().getPo().getCol() &&
+                player.getGraphics().getPo().getRow() == bullet.getGraphics().getPo().getRow());
+    }
+
+    public void randomChance(){
+     //   int random =
     }
 
     private void implementKeys(){

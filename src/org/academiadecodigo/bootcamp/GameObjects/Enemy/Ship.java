@@ -1,8 +1,10 @@
 package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 
+import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameEngine.Random;
+import org.academiadecodigo.bootcamp.GameObjects.Bullet;
 
 public class Ship extends Enemy {
 
@@ -25,14 +27,11 @@ public class Ship extends Enemy {
     }
 
 
-    @Override
-    public void shoot() {
-        //return new Bullet();
-    }
-
     public Graphics getGraphics(){
         return super.getGraphics();
     }
+
+
 
 
     public void hide(){
