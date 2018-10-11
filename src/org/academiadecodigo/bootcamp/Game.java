@@ -54,6 +54,11 @@ public class Game implements KeyboardHandler {
 
             checkCollisions();
             if(player.isDestroyed()){
+
+                Music dead = new Music("player_dead");
+                dead.startMusic(true);
+
+                Thread.sleep(5000);
                 System.exit(0);
             }
 
