@@ -12,7 +12,7 @@ public class Player extends GameObjects implements Shootable {
     private Life[] lives;
     private int numbOfLives;
     private boolean destroyed;
-    private Bullet[] bullets = new Bullet[20];
+    private Bullet[] bullets = new Bullet[5];
 
 
     public Player(){
@@ -24,7 +24,7 @@ public class Player extends GameObjects implements Shootable {
     }
 
     public void move(Directions direction) {
-        object.move(direction, 40);
+        object.move(direction, 20);
     }
 
     private void drawLives(){

@@ -10,6 +10,10 @@ import java.net.URL;
 
 public class Music {
 
+    public Music(String url){
+        
+    }
+
     public void startMusic() {
 
         String pathStr = "/resources/music.wav";

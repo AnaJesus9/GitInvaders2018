@@ -49,7 +49,7 @@ public class Graphics extends Direction {
                 }
                 break;
             case DOWN:
-                if(!(po.getRow() >= GameConfigs.ROW-1)){
+                if(!(po.getRow() >= GameConfigs.ROW-2)){
                     moveDirection(0, speed);
                     getPos(speed, direction);
                     break;
@@ -63,7 +63,7 @@ public class Graphics extends Direction {
                 }
                 break;
             case RIGHT:
-                if(!(po.getCol() >= GameConfigs.COL-1)){
+                if(!(po.getCol() >= GameConfigs.COL-2 )){
                     moveDirection(speed, 0);
                     getPos(speed, direction);
                     break;
@@ -82,6 +82,10 @@ public class Graphics extends Direction {
 
     private void getPos(int speed, Directions direction){
         po.movePosition(speed, direction);
+    }
+
+    public void setPo(Position pos){
+        this.po =pos;
     }
 
 }

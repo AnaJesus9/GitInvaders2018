@@ -25,11 +25,11 @@ public class Bullet extends GameObjects {
             return;
         }
         if(object.getPo().getCol() == 0 && shooter instanceof Enemy ||
-                object.getPo().getCol() == GameConfigs.COL -1 && shooter instanceof Player ) {
+                object.getPo().getCol() == GameConfigs.COL -2 && shooter instanceof Player ) {
             destroyed();
             return;
         }
-        if(!(object.getPo().getCol() == GameConfigs.COL-1) || !(object.getPo().getCol() == 0)){
+        if(!(object.getPo().getCol() == GameConfigs.COL-2) || !(object.getPo().getCol() == 0)){
             object.move(direction, 10);
             return;
         }
