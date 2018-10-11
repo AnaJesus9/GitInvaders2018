@@ -6,8 +6,8 @@ import org.academiadecodigo.bootcamp.GameEngine.Menu.Menu;
 public class TestMenu {
     public static void main(String[] args) throws Exception {
 
-        Menu u = new Menu(14,14,);
-        u.init();
+        Menu menu = new Menu(0,0);
+        menu.init();
 
     }
 }

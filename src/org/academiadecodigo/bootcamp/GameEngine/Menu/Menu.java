@@ -9,19 +9,20 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
-import org.academiadecodigo.bootcamp.Game;
+
 
 public class Menu implements Grid, KeyboardHandler {
 
-    private Game game;
+    //private Game game;
     private Picture menu;
+    private Picture[] pictures;
     private int row;
     private int col;
     private int CELLSIZE = GameConfigs.CELLSIZE;
     private Keyboard keyboard;
 
-    public Menu(int row, int col, Game game) {
-        this.game = game;
+    public Menu(int row, int col) {
+        //this.game = game;
         this.row = row;
         this.col = col;
         keyboard = new Keyboard(this);
@@ -35,7 +36,7 @@ public class Menu implements Grid, KeyboardHandler {
 
             case KeyboardEvent.KEY_1:
                 menu.delete();
-                game.start();
+                //game.start();
                 break;
 
             case KeyboardEvent.KEY_2:
@@ -73,27 +74,30 @@ public class Menu implements Grid, KeyboardHandler {
         creditsKey.setKey(KeyboardEvent.KEY_3);
         creditsKey.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(creditsKey);
-
-
     }
 
     private void mainMenu() {
 
-        menu = new Picture(0, 0, "resources/git_invaders_main_menu_001.png");
+        menu = new Picture(col, row, "resources/git_invaders_logo.png");
         menu.draw();
-
     }
-
 
     private void credits() {
-            menu = new Picture(0,0,"resources/git_invaders_credits.png");
-            menu.draw();
+
+        menu = new Picture(0, 0, "resources/git_invaders_credits.png");
+        menu.draw();
     }
+
+    private void gameOver() {
+        menu = new Picture(0,0,"resources/git_invaders_gameover.png");
+        menu.draw();
+    }
+
+
 
     public void delete() {
         menu.delete();
     }
-
 
     public double getRow() {
         return row;
