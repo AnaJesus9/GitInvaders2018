@@ -63,7 +63,7 @@ public class Graphics extends Direction {
                 }
                 break;
             case RIGHT:
-                if(!(po.getCol() >= GameConfigs.COL-1)){
+                if(!(po.getCol() >= GameConfigs.COL-2 )){
                     moveDirection(speed, 0);
                     getPos(speed, direction);
                     break;

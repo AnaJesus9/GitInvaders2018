@@ -24,7 +24,7 @@ public class Player extends GameObjects implements Shootable {
     }
 
     public void move(Directions direction) {
-        object.move(direction, 40);
+        object.move(direction, 20);
     }
 
     private void drawLives(){

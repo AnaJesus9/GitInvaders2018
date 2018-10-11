@@ -48,7 +48,21 @@ public class Game implements KeyboardHandler {
             if(player.isDestroyed()){
                 System.exit(0);
             }
+
+            if( checkEnemies() ){
+                createEnemies();
+            }
+
         }
+    }
+
+    public boolean checkEnemies(){
+        for( Ship enemy : enemies){
+            if( !enemy.isDestroyed()){
+                return false;
+            }
+        }
+        return true;
     }
 
     public void checkCollisions(){
