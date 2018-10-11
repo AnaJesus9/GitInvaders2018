@@ -12,7 +12,7 @@ public class Player extends GameObjects implements Shootable {
     private Life[] lives;
     private int numbOfLives;
     private boolean destroyed;
-    private Bullet[] bullets = new Bullet[20];
+    private Bullet[] bullets = new Bullet[5];
 
 
     public Player(){
