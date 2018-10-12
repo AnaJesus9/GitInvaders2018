@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
+import org.academiadecodigo.bootcamp.GameEngine.Menu.Menu;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Score;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
@@ -18,6 +19,7 @@ public class Game implements KeyboardHandler {
     private Keyboard keyboard;
     private int scores = 1;
     private Score score = new Score(scores);
+    private Menu menu = new Menu(-42, 0);
 
     public Game(){
 
@@ -25,6 +27,7 @@ public class Game implements KeyboardHandler {
         this.keyboard = new Keyboard(this);
         implementKeys();
         createEnemies();
+        menu.init();
     }
 
     private void createEnemies(){
@@ -39,6 +42,10 @@ public class Game implements KeyboardHandler {
         Music m = new Music("back");
         m.startMusic(true);
 
+
+        while (menu.isStatus()){
+            System.out.println("teste");
+        }
         while(true){
 
             Thread.sleep(10);

@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.GameEngine.Menu;
 
+import org.academiadecodigo.bootcamp.Game;
+import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Grid;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.simplegraphics.graphics.Color;
@@ -10,10 +12,12 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import java.io.IOException;
+
 
 public class Menu implements Grid, KeyboardHandler {
 
-    //private Game game;
+    private Game game;
     private Picture menu;
     private int row;
     private int col;
@@ -21,12 +25,13 @@ public class Menu implements Grid, KeyboardHandler {
     private Keyboard keyboard;
     private boolean isInCredits = false;
     private Animation animation;
+    private boolean status = true;
 
     public Menu(int row, int col) {
-        //this.game = game;
         this.row = row;
         this.col = col;
         this.keyboard = new Keyboard(this);
+        EngineFactory.field();
     }
 
     @Override
@@ -36,7 +41,7 @@ public class Menu implements Grid, KeyboardHandler {
 
             case KeyboardEvent.KEY_1:
                 menu.delete();
-                //game.start();
+                status = false;
                 break;
 
             case KeyboardEvent.KEY_2:
@@ -150,4 +155,9 @@ public class Menu implements Grid, KeyboardHandler {
         public void setCELLSIZE ( int CELLSIZE){
             this.CELLSIZE = CELLSIZE;
         }
+
+
+    public boolean isStatus() {
+        return status;
     }
+}
