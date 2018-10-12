@@ -5,9 +5,8 @@ import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 
 public class EngineFactory {
 
-    public static void field(){
-        Canvas filed = new Canvas();
-        filed.init();
+    public static Canvas field(){
+        return new Canvas();
     }
 
     public static void object(double row, double col, int resource){

@@ -24,6 +24,7 @@ public class Bullet extends GameObjects {
         if(isDestroyed()) {
             return;
         }
+        animate();
         if(object.getPo().getCol() == 0 && shooter instanceof Enemy ||
                 object.getPo().getCol() == GameConfigs.COL -1 && shooter instanceof Player ) {
             destroyed();
@@ -38,6 +39,11 @@ public class Bullet extends GameObjects {
     public void hit() {
         getGraphics().hide();
         this.destroyed = true;
+    }
+
+    public void animate() {
+        object.hide();
+        object.show();
     }
 
     public void destroyed() {

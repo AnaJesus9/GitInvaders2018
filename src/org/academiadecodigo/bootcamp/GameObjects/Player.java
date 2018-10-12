@@ -34,6 +34,13 @@ public class Player extends GameObjects implements Shootable {
         }
     }
 
+    public void animate() {
+        object.hide();
+        object.show();
+        animateLives();
+
+    }
+
     public void shoot(){
         for(int i = 0; i < bullets.length; i++){
             if( bullets[i] != null && bullets[i].isDestroyed()){
@@ -72,6 +79,13 @@ public class Player extends GameObjects implements Shootable {
         }
         if(numbOfLives == 0){
             destroyed = true;
+        }
+    }
+
+    public void animateLives() {
+        for(int i = 0;i < numbOfLives; i++) {
+            lives[i].hide();
+            lives[i].show();
         }
     }
 

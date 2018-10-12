@@ -33,7 +33,7 @@ public abstract class Enemy extends GameObjects implements Shootable {
         if(isDestroyed()){
             return;
         }
-
+        animate();
         getRandomShot();
 
         if (timesToMove == 0) {
@@ -111,6 +111,11 @@ public abstract class Enemy extends GameObjects implements Shootable {
             }
             bullet.destroyed();
         }
+    }
+
+    public void animate() {
+        object.hide();
+        object.show();
     }
 
     public Graphics getObject() {
