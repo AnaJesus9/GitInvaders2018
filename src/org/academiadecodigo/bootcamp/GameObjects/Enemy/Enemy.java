@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp.GameObjects.Enemy;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Explosion;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameEngine.Random;
 import org.academiadecodigo.bootcamp.GameObjects.Bullet;
@@ -101,6 +102,7 @@ public abstract class Enemy extends GameObjects implements Shootable {
     public void setDestroyed() {
         destroyBullets();
         getGraphics().hide();
+        Explosion explosion = new Explosion(getGraphics().getPo().getRow(),getGraphics().getPo().getCol(),7);
         this.destroyed = true;
     }
 

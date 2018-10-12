@@ -5,6 +5,7 @@ import org.academiadecodigo.bootcamp.GameEngine.Field.Position;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Graphics;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Enemy;
+import org.academiadecodigo.bootcamp.music.Music;
 
 public class Bullet extends GameObjects {
 
@@ -26,11 +27,11 @@ public class Bullet extends GameObjects {
         }
         animate();
         if(object.getPo().getCol() == 0 && shooter instanceof Enemy ||
-                object.getPo().getCol() == GameConfigs.COL -1 && shooter instanceof Player ) {
+                object.getPo().getCol() == GameConfigs.COL -2 && shooter instanceof Player ) {
             destroyed();
             return;
         }
-        if(!(object.getPo().getCol() == GameConfigs.COL-1) || !(object.getPo().getCol() == 0)){
+        if(!(object.getPo().getCol() == GameConfigs.COL-2) || !(object.getPo().getCol() == 0)){
             object.move(direction, 10);
             return;
         }

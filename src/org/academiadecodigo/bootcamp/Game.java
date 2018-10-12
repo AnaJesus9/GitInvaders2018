@@ -2,8 +2,12 @@ package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Canvas;
+import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
+import org.academiadecodigo.bootcamp.GameEngine.Menu.Menu;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.Score;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
+import org.academiadecodigo.bootcamp.music.Music;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -16,6 +20,9 @@ public class Game implements KeyboardHandler {
     private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
     private Keyboard keyboard;
     private Canvas field;
+    private int scores = 1;
+    private Score score = new Score(scores);
+    private Menu menu = new Menu(-42, 0);
 
     public Game(){
 
@@ -23,6 +30,7 @@ public class Game implements KeyboardHandler {
         this.keyboard = new Keyboard(this);
         implementKeys();
         createEnemies();
+        menu.init();
     }
 
     private void createEnemies(){
@@ -34,6 +42,15 @@ public class Game implements KeyboardHandler {
     public void start() throws Exception{
         field = EngineFactory.field();
         field.init();
+
+
+        Music m = new Music("back");
+        m.startMusic(true);
+
+
+        while (menu.isStatus()){
+            System.out.println("teste");
+        }
         while(true){
 
             Thread.sleep(10);
@@ -52,9 +69,30 @@ public class Game implements KeyboardHandler {
 
             checkCollisions();
             if(player.isDestroyed()){
+
+                Music dead = new Music("player_dead");
+                dead.startMusic(true);
+
+                Thread.sleep(5000);
                 System.exit(0);
             }
+
+            if( checkEnemies() ){
+                createEnemies();
+            }
+
         }
+    }
+
+    public boolean checkEnemies(){
+        for( Ship enemy : enemies){
+            if( !enemy.isDestroyed()){
+                return false;
+            }
+        }
+        scores++;
+        score.update(scores);
+        return true;
     }
 
     public void checkCollisions(){
@@ -138,7 +176,10 @@ public class Game implements KeyboardHandler {
                 break;
             case KeyboardEvent.KEY_DOWN: player.move(Directions.DOWN);
                 break;
-            case KeyboardEvent.KEY_SPACE: player.shoot();
+            case KeyboardEvent.KEY_SPACE:
+                Music m = new Music("bullet");
+                m.startMusic(true);
+                player.shoot();
                 break;
         }
 
