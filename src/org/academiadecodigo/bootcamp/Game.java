@@ -40,6 +40,10 @@ public class Game implements KeyboardHandler {
     }
 
     public void start() throws Exception{
+        while (menu.isStatus()){
+            System.out.println("teste");
+        }
+
         field = EngineFactory.field();
         field.init();
 
@@ -48,9 +52,7 @@ public class Game implements KeyboardHandler {
         m.startMusic(true);
 
 
-        while (menu.isStatus()){
-            System.out.println("teste");
-        }
+
         while(true){
 
             Thread.sleep(10);
