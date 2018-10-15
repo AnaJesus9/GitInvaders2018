@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.Game;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Grid;
 import org.academiadecodigo.bootcamp.GameEngine.GameConfigs;
+import org.academiadecodigo.bootcamp.music.Music;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
@@ -36,7 +37,8 @@ public class Menu implements Grid, KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-
+        Music music = new Music("menu");
+        music.startMusic(true);
         switch (keyboardEvent.getKey()) {
 
             case KeyboardEvent.KEY_1:

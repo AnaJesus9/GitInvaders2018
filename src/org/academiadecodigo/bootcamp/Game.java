@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 import org.academiadecodigo.bootcamp.GameEngine.Field.Canvas;
 import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
 import org.academiadecodigo.bootcamp.GameEngine.Menu.Menu;
+import org.academiadecodigo.bootcamp.GameEngine.Objects.GameOver;
 import org.academiadecodigo.bootcamp.GameEngine.Objects.Score;
 import org.academiadecodigo.bootcamp.GameObjects.*;
 import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
@@ -22,7 +23,7 @@ public class Game implements KeyboardHandler {
     private Canvas field;
     private int scores = 1;
     private Score score = new Score(scores);
-    private Menu menu = new Menu(-42, 0);
+    private Menu menu = new Menu(-42, -1);
 
     public Game(){
 
@@ -41,12 +42,13 @@ public class Game implements KeyboardHandler {
 
     public void start() throws Exception{
         while (menu.isStatus()){
-            System.out.println("teste");
+            System.out.println("");
         }
 
         field = EngineFactory.field();
         field.init();
 
+        score.update(scores);
 
         Music m = new Music("back");
         m.startMusic(true);
@@ -54,7 +56,6 @@ public class Game implements KeyboardHandler {
 
 
         while(true){
-
             Thread.sleep(10);
             field.animate();
             player.animate();
@@ -74,12 +75,14 @@ public class Game implements KeyboardHandler {
 
                 Music dead = new Music("player_dead");
                 dead.startMusic(true);
-
+                GameOver gO = new GameOver();
                 Thread.sleep(5000);
                 System.exit(0);
             }
 
             if( checkEnemies() ){
+
+                score.update(scores);
                 createEnemies();
             }
 
@@ -93,7 +96,6 @@ public class Game implements KeyboardHandler {
             }
         }
         scores++;
-        score.update(scores);
         return true;
     }
 
