@@ -1,12 +1,13 @@
 package org.academiadecodigo.bootcamp;
-import org.academiadecodigo.bootcamp.GameEngine.Direction.Directions;
-import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
-import org.academiadecodigo.bootcamp.GameEngine.Field.Canvas;
-import org.academiadecodigo.bootcamp.GameEngine.EngineFactory;
-import org.academiadecodigo.bootcamp.GameEngine.Menu.Menu;
-import org.academiadecodigo.bootcamp.GameEngine.Objects.Score;
-import org.academiadecodigo.bootcamp.GameObjects.*;
-import org.academiadecodigo.bootcamp.GameObjects.Enemy.Ship;
+
+import org.academiadecodigo.bootcamp.gameengine.CollisionDetector;
+import org.academiadecodigo.bootcamp.gameengine.field.Direction;
+import org.academiadecodigo.bootcamp.gameengine.field.Background;
+import org.academiadecodigo.bootcamp.gameengine.utils.GameConfigs;
+import org.academiadecodigo.bootcamp.gameengine.menu.Menu;
+import org.academiadecodigo.bootcamp.gameengine.sprites.Score;
+import org.academiadecodigo.bootcamp.gameobjects.*;
+import org.academiadecodigo.bootcamp.gameobjects.enemies.Ship;
 import org.academiadecodigo.bootcamp.music.Music;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
@@ -15,62 +16,50 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
 public class Game implements KeyboardHandler {
 
-    private Player player;
-    private final int NUMBER_OF_ENEMIES = 20;
-    private Ship[] enemies = new Ship[NUMBER_OF_ENEMIES];
-    private Keyboard keyboard;
-    private Canvas field;
-    private int scores = 1;
-    private Score score = new Score(scores);
-    private Menu menu = new Menu(-42, 0);
+    //TODO: resource paths all over the place should be centralized in a class with all of them as constants
 
-    public Game(){
+    private final Player player;
+    private final Ship[] enemies;
+    private final Keyboard keyboard;
+    private final Score score;
+    private final Menu menu;
 
-        player = new Player();
+    public Game() {
+        this.player = new Player();
+        this.enemies = new Ship[GameConfigs.NUMBER_OF_ENEMIES];
         this.keyboard = new Keyboard(this);
+        this.score = new Score();
+        this.menu = new Menu();
+    }
+
+    public void init() {
         implementKeys();
-        createEnemies();
+        createNewWave();
         menu.init();
     }
 
-    private void createEnemies(){
-        for( int i = 0; i < NUMBER_OF_ENEMIES; i++){
-            this.enemies[i] = new Ship();
-        }
-    }
-
-    public void start() throws Exception{
-        while (menu.isStatus()){
-            System.out.println("teste");
+    public void start() throws InterruptedException {
+        while (menu.isMenuOn()) {
+            Thread.sleep(200);
         }
 
-        field = EngineFactory.field();
+        Background field = new Background();
         field.init();
-
 
         Music m = new Music("back");
         m.startMusic(true);
 
-
-
-        while(true){
+        while (true) {
 
             Thread.sleep(10);
             field.animate();
             player.animate();
             player.moveBullet();
 
-            for(  Ship enemy : enemies){
+            moveEnemies();
+            CollisionDetector.checkCollisions(enemies, player);
 
-                if(enemy.isDestroyed()){
-                    continue;
-                }
-                enemy.move();
-                enemy.moveBullet();
-            }
-
-            checkCollisions();
-            if(player.isDestroyed()){
+            if (player.isDestroyed()) {
 
                 Music dead = new Music("player_dead");
                 dead.startMusic(true);
@@ -79,81 +68,41 @@ public class Game implements KeyboardHandler {
                 System.exit(0);
             }
 
-            if( checkEnemies() ){
-                createEnemies();
+            if (checkEndOfWave()) {
+                createNewWave();
             }
 
         }
     }
 
-    public boolean checkEnemies(){
-        for( Ship enemy : enemies){
-            if( !enemy.isDestroyed()){
+    private void moveEnemies() {
+        for (Ship enemy : enemies) {
+
+            if (enemy.isDestroyed()) {
+                continue;
+            }
+            enemy.move();
+            enemy.moveBullet();
+        }
+    }
+
+    private void createNewWave() {
+        for (int i = 0; i < GameConfigs.NUMBER_OF_ENEMIES; i++) {
+            this.enemies[i] = new Ship();
+        }
+    }
+
+    private boolean checkEndOfWave() {
+        for (Ship enemy : enemies) {
+            if (!enemy.isDestroyed()) {
                 return false;
             }
         }
-        scores++;
-        score.update(scores);
+        score.increaseScore();
         return true;
     }
 
-    public void checkCollisions(){
-
-        for(Ship enemy : enemies){
-
-            if( enemy.isDestroyed()){
-                continue;
-            }
-            if(enemy.getGraphics().getPo().getCol() == 0){
-                enemy.hit();
-                player.hit();
-            }
-
-            for(Bullet bullet : player.getBullets()){
-                if( bullet != null){
-                    if(bullet.isDestroyed()){
-                        continue;
-                    }
-
-                    if( compareEnemy(enemy,bullet) ){
-                        enemy.hit();
-                        bullet.hit();
-                    }
-                }
-            }
-        }
-
-        for(Ship enemy : enemies){
-            if( enemy.isDestroyed()){
-                continue;
-            }
-
-            for(Bullet bullet : enemy.getBullets()) {
-                if( bullet != null){
-                    if(bullet.isDestroyed()){
-                        continue;
-                    }
-
-                    if( comparePlayer(player,bullet)) {
-                        player.hit();
-                        bullet.hit();
-                    }
-                }
-            }
-        }
-    }
-
-    public boolean compareEnemy(Ship enemy, Bullet bullet){
-        return (enemy.getGraphics().getPo().getCol() == bullet.getGraphics().getPo().getCol() &&
-                enemy.getGraphics().getPo().getRow() == bullet.getGraphics().getPo().getRow());
-    }
-
-    public boolean comparePlayer(Player player, Bullet bullet){
-        return (player.getGraphics().getPo().getCol() == bullet.getGraphics().getPo().getCol() &&
-                player.getGraphics().getPo().getRow() == bullet.getGraphics().getPo().getRow());
-    }
-
-    private void implementKeys(){
+    private void implementKeys() {
 
         KeyboardEvent up = new KeyboardEvent();
         up.setKey(KeyboardEvent.KEY_UP);
@@ -172,11 +121,13 @@ public class Game implements KeyboardHandler {
         this.keyboard.addEventListener(space);
     }
 
-    public void keyPressed(KeyboardEvent e){
-        switch (e.getKey()){
-            case KeyboardEvent.KEY_UP: player.move(Directions.UP);
+    public void keyPressed(KeyboardEvent e) {
+        switch (e.getKey()) {
+            case KeyboardEvent.KEY_UP:
+                player.move(Direction.UP);
                 break;
-            case KeyboardEvent.KEY_DOWN: player.move(Directions.DOWN);
+            case KeyboardEvent.KEY_DOWN:
+                player.move(Direction.DOWN);
                 break;
             case KeyboardEvent.KEY_SPACE:
                 Music m = new Music("bullet");
@@ -187,7 +138,7 @@ public class Game implements KeyboardHandler {
 
     }
 
-    public void keyReleased(KeyboardEvent e){
+    public void keyReleased(KeyboardEvent e) {
 
     }
 }

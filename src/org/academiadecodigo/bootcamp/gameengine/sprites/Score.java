@@ -1,4 +1,4 @@
-package org.academiadecodigo.bootcamp.GameEngine.Objects;
+package org.academiadecodigo.bootcamp.gameengine.sprites;
 
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -6,22 +6,17 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 public class Score {
 
     private Text object;
+    private int score;
 
-    public Score(int score){
+    public Score(){
+        score = 1;
         this.object = new Text(440,400,"WAVE " + score);
         this.object.setColor(Color.WHITE);
         this.object.draw();
     }
 
-    public void update(int score) {
+    public void increaseScore() {
+        score++;
         object.setText("WAVE " + score) ;
-    }
-
-    public void hide(){
-        object.delete();
-    }
-
-    public void show(){
-        object.draw();
     }
 }
